@@ -1,0 +1,14 @@
+.directory{
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 650px){
+    .directory{
+      flex-direction: column;
+      align-items: center;
+    }
+  }

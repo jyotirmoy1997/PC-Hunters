@@ -1,0 +1,54 @@
+.footer{
+    display: flex;
+    padding: 0.75em;
+    width: 50%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.footer-icons{
+    display: flex;
+    width: 20%;
+    justify-content: space-evenly;
+}
+
+#mongo-icon{
+    height: 30px;
+    width: 13.5px;
+}
+
+#express-icon{
+    height: 30px;
+    width: 51.28px;
+}
+
+#react-icon{
+    height: 30px;
+    width: 33px;
+}
+
+#node-icon{
+    height: 30px;
+    width: 26.71px;
+}
+
+#linked-in-icon{
+    height: 30px;
+    width: 30px;
+}
+
+#github-icon{
+    height: 30px;
+    width: 30px;
+}
+
+@media (max-width : 850px){
+    .footer{
+        width: 90%;
+        padding: 0.25em;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 150px;
+    }
+}

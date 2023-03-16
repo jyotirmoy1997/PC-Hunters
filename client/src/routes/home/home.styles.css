@@ -1,0 +1,56 @@
+.home-wrapper{
+    width: 100%;
+}
+
+.home-cover{
+    width: 100%;
+    position: relative;
+}
+
+.home-cover button {
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    height: 50px;
+    width: 100px;
+    font-family: 'Saira', sans-serif;
+    font-size: 22px;
+    background-color: #149414;
+    color: white;
+    border-radius: 10px;
+}
+
+.home-cover button:hover {
+    cursor: pointer;
+}
+.home-cover img {
+    z-index: -9999;
+}
+
+.home-wrapper img{
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width : 850px){
+    .home-wrapper h1{
+        font-size: 22px;
+    }
+    .home-cover button {
+        position: absolute;
+        top: 80%;
+        left: 85%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        height: 50px;
+        width: 100px;
+        font-family: 'Saira', sans-serif;
+        font-size: 20px;
+        background-color: #149414;
+        color: white;
+        border-radius: 10px;
+    }
+    
+}

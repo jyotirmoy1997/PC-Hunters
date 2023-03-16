@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+.wrapper-signup{
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 10px;
+    height: 500px;
+    padding: 4em;
+}
+
+.it1, .it2, .it3, .it4, .it5, .it6, .it7, .it8, .it9, .it10, .it11{
+    grid-column: 1/-1;
+}
+.it1{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 2.5em;;
+}
+.it2{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1.25em;
+}
+
+.it3, .it5, .it7, .it9{
+    font-weight: bold;
+}
+
+.it4, .it6, .it8, .it10{
+    /* border-radius: 5px; */
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.25px solid gray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.it4:focus, .it6:focus, .it8:focus, .it10:focus{
+    background-color:#c0cfff;
+    outline: none;
+    border-bottom: 0.5px solid black;
+}
+
+
+.it11{
+    grid-row: 12/13;
+    width: 200px;
+    margin-top: -30px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    color: white;
+    border-radius: 2px;
+    font-family: 'Saira', sans-serif;
+    text-transform: uppercase;
+    font-size: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2)
+}
+
+.it11:hover{
+    background-color: #303f9f;
+    cursor: pointer;
+}
+
+
+#sign-up-email::after, #sign-up-password::after, #sign-up-confirm-password::after{
+    content: attr(data);
+    color: red;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+
+@media(max-width : 850px){
+    .wrapper-signup{
+        width: 90%;
+        padding: 2em 0;
+    }
+}
