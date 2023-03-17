@@ -11,6 +11,7 @@ const authRouter = require("./routes/authRoutes")
 const userRouter = require("./routes/userRoutes")
 const productRouter = require("./routes/productRoutes")
 const categoriesRouter = require("./routes/categoryRoutes")
+const cartRouter = require("./routes/cartRoutes")
 
 
 // This is the logger middleware
@@ -50,6 +51,7 @@ server.use("/api/v1/auth", authRouter)
 server.use("/api/v1/user", userRouter)
 server.use("/api/v1/products", productRouter)
 server.use("/api/v1/categories", categoriesRouter)
+server.use("/api/v1/cart", cartRouter)
 
 server.use(notFoundMiddleware)
 server.use(errorHandlerMiddleware)

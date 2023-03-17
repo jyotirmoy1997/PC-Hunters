@@ -6,7 +6,7 @@ import AdminDashBoard from './components/admin-dashboard/admin-dashboard.compone
 // import SignInPage from './route/sign-in-page/sign-in-page.component';
 // import Cart from './route/cart/cart.component';
 import Shop from './routes/shop/shop.routes';
-// import CheckOut from './route/checkout/checkout.component';
+import CheckOut from './routes/checkout/checkout.component';
 // import PaymentPage from './route/payment-page/payment-page.component';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -26,10 +26,10 @@ const App = () => {
         <Route path='/log-in' element={<LogIn/>}/>
         <Route path='/admin' element={<AdminDashBoard/>}/>
         <Route path='/shop/*' element={<Shop/>}/> 
-        {/* 
-        <Route path='/cart' element={<Cart/>}/>
+        
+        {/* <Route path='/cart' element={<Cart/>}/> */}
         <Route path='/checkout' element={<CheckOut/>}/>
-        <Route path='/payment' element={<PaymentPage/>}/> */}
+        {/* <Route path='/payment' element={<PaymentPage/>}/> */}
        </Route>
     </Routes>
   );

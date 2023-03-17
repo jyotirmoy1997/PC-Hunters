@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import userReducer from '../features/user/userSlice';
 import categoriesReducer from "../features/categories/categoriesSlice"
 import productsReducer from "../features/products/productSlice"
+import cartReducer from "../features/cart/cartSlice"
 import { combineReducers } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 
@@ -15,7 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   users: userReducer,
   categories : categoriesReducer,
-  products : productsReducer
+  products : productsReducer,
+  cart : cartReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
