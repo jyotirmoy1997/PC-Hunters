@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const DirectoryItem = ({category}) => {
     const {title, image} = category;
-    console.log(title)
     return (
         <div className="directory-container" style={
             {

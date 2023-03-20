@@ -1,8 +1,17 @@
 import './checkout-item.styles.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeCartItem } from '../../features/cart/cartSlice'
+import { selectUser } from '../../features/user/userSlice'
 
 const CheckOutItem = ({cartItem, products}) => {
+    const dispatch = useDispatch()
+    const user = useSelector(selectUser)
     const {product, quantity} = cartItem
-    const {name, price, image} = products.filter((p) => p._id === product)[0]
+    const {name, price, image, _id} = products.filter((p) => p._id === product)[0]
+    const removeCartItemHandler = () => {
+        console.log("Clicked")
+        dispatch(removeCartItem({user : user.userId, product : _id}))
+    }
     return(
         <div className='checkout-item-container'>
             <div className='image-container'>
@@ -19,7 +28,7 @@ const CheckOutItem = ({cartItem, products}) => {
                 </div>
                 </span>
             <span className='price'>{price}</span>
-            <div className='remove-button'>&#10005;</div>
+            <div className='remove-button' onClick={removeCartItemHandler} >&#10005;</div>
         </div>
     )
 

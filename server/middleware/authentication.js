@@ -2,8 +2,8 @@ const CustomError = require("../errors/index")
 const { isTokenValid } = require("../utils/JWT")
 
 const authenticateUser = (req, res, next) => {
-    const token = req.signedCookies
-    console.log(token)
+    // const token = req.signedCookies
+    // console.log(token)
     next()
     // console.log(token)
     // if(!token){

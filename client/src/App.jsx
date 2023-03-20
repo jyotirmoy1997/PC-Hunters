@@ -12,13 +12,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllProducts } from './features/products/productSlice';
 import { getAllCategories } from './features/categories/categoriesSlice';
+import { selectUser, userStatus} from './features/user/userSlice';
+import { getAllCartItems } from './features/cart/cartSlice';
 
 const App = () => {
   const dispatch = useDispatch()
+  const {userId} = useSelector(selectUser)
+  const userStat = useSelector(userStatus)
   useEffect(() => {
     dispatch(getAllCategories())
     dispatch(getAllProducts())
   }, [])
+
+  useEffect(() => {
+    if(userStat === "loggedIn"){
+      dispatch(getAllCartItems(userId))
+      console.log("Called")
+    }
+  }, [userStat])
+
   return (
     <Routes>
       <Route path='/' element={<Navigation/>}>

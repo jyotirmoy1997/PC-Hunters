@@ -1,12 +1,11 @@
 import {useSelector, useDispatch} from "react-redux"
 import { getAllProducts } from "../../features/products/productSlice"
 import axios from "axios"
+import { selectUser } from "../../features/user/userSlice"
 
 const AdminDashBoard = () => {
-    
     const onClickHandler = async () => {
-        const response = await axios.post("http://localhost:5000/api/v1/categories/uploadCategories", {id : 1})
-        console.log(response)
+        
     }
 
     return(

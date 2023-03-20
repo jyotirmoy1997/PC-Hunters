@@ -4,6 +4,7 @@ import './checkout.styles.css'
 import {useSelector, useDispatch} from "react-redux"
 import { selectAllCartItems, selectCartTotal } from "../../features/cart/cartSlice";
 import { selectProducts } from "../../features/products/productSlice";
+import { nanoid } from 'nanoid'
 
 const CheckOut = () => {
     const cartItems = useSelector(selectAllCartItems)
@@ -36,7 +37,7 @@ const CheckOut = () => {
 
             <div>
             {
-                cartItems.map((cartItem) => <CheckOutItem products={products} cartItem={cartItem} />)
+                cartItems.map((cartItem) => <CheckOutItem key={nanoid()} products={products} cartItem={cartItem} />)
             }
             </div>
            <div className="total">${cartTotal}</div>

@@ -11,9 +11,10 @@ const initialState = {
     error : null
 }
 
-export const getAllCartItems = createAsyncThunk('cart/getAllCartItems', async() => {
+export const getAllCartItems = createAsyncThunk('cart/getAllCartItems', async(user) => {
+    console.log(user)
     try{
-        const response = await axios.get(`${BASE_URL}/api/v1/cart/getAllCartItems`)
+        const response = await axios.get(`${BASE_URL}/api/v1/cart/getAllCartItems/${user}`)
         return response.data
     }
     catch(error){
@@ -32,6 +33,25 @@ export const addCartItem = createAsyncThunk('cart/addCartItem', async({user, pro
     }
 })
 
+export const removeCartItem = createAsyncThunk('cart/removeCartItem', async({user, product}) => {
+    // console.log(user, product)
+    try{
+        const response = await axios.delete(`${BASE_URL}/api/v1/cart/removeCartItem`, {
+            data: {
+              user,
+              product
+            },
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+        return response.data
+    }
+    catch(error){
+        return error.response
+    }
+})
+
 
 const cartSlice = createSlice({
     name : "Cart",
@@ -39,7 +59,9 @@ const cartSlice = createSlice({
     reducers : {},
     extraReducers : (builder) => {
         builder.addCase(getAllCartItems.fulfilled, (state, action) => {
-            state.cart = action.payload
+            state.cart = action.payload.products
+            state.count = action.payload.count
+            state.total = action.payload.total
             state.status = 'successfull'
             
         })
@@ -55,6 +77,18 @@ const cartSlice = createSlice({
             
         })
         .addCase(addCartItem.rejected, (state, action) => {
+            state.error = action.error.message
+            state.status = 'failed'
+        })
+        .addCase(removeCartItem.fulfilled, (state, action) => {
+            console.log(action.payload)
+            state.cart = action.payload.products
+            state.count = action.payload.count
+            state.total = action.payload.total
+            state.status = 'successfull'
+            
+        })
+        .addCase(removeCartItem.rejected, (state, action) => {
             state.error = action.error.message
             state.status = 'failed'
         })

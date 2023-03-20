@@ -8,7 +8,6 @@ const ProductCard = ({product}) => {
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
     const {name, image, price} = product
-    console.log(product._id)
     const addProductToCart = () => {
         dispatch(addCartItem({user : user.userId, product : product._id, quantity : 1}))
     }

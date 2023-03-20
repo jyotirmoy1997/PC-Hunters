@@ -6,7 +6,7 @@ export const categories = [
     },
     {
       id:2,
-      title:'Cooling Systems',
+      title:'Cooling System',
       image: 'https://qph.cf2.quoracdn.net/main-qimg-400fcda3886b2290e2007e451a9ae762-lq'
     },
     {
