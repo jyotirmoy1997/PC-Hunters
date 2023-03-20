@@ -61,6 +61,45 @@ const addCartItem = async (req, res) => {
     
 }
 
+const updateCartItem = async (req, res) => {
+  const {user, product, operation} = req.body
+  console.log(user, product, operation)
+  const productPrice = (await Product.findOne({_id : product})).price
+  try {
+    let cart = await Cart.findOne({ user: user })
+    const productIndex = cart.products.findIndex(
+      (p) => p.product.toString() === product
+    )
+
+    if (productIndex > -1) {
+      if(operation === "increment"){
+        cart.products[productIndex].quantity++
+        cart.count++
+        cart.total += productPrice
+      }
+      else if(operation === "decrement"){
+        cart.products[productIndex].quantity--
+        cart.count--
+        cart.total -= productPrice
+      }
+      if(cart.products[productIndex].quantity === 0){
+        cart.products.splice(productIndex, 1)
+      }
+      await cart.save()
+      console.log(cart)
+      return res.status(200).json(cart)
+      
+    } else {
+      console.log("Product Does Not Exist")
+      return res.status(500).json({ error: "Server error" })
+    }
+    
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ error: "Server error" })
+  }
+}
+
 const removeCartItem = async (req, res) => {
   console.log("Hit")
   const {user, product} = req.body
@@ -92,4 +131,4 @@ const removeCartItem = async (req, res) => {
 
 }
 
-module.exports = {getAllCartItems, addCartItem, removeCartItem}
+module.exports = {getAllCartItems, addCartItem, removeCartItem, updateCartItem}

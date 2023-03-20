@@ -1,6 +1,6 @@
 import './checkout-item.styles.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeCartItem } from '../../features/cart/cartSlice'
+import { removeCartItem, updateCartItem } from '../../features/cart/cartSlice'
 import { selectUser } from '../../features/user/userSlice'
 
 const CheckOutItem = ({cartItem, products}) => {
@@ -8,10 +8,21 @@ const CheckOutItem = ({cartItem, products}) => {
     const user = useSelector(selectUser)
     const {product, quantity} = cartItem
     const {name, price, image, _id} = products.filter((p) => p._id === product)[0]
+
+    const incrementHandler = () => {
+        dispatch(updateCartItem({user : user.userId, product : _id, operation : "increment"}))
+    }
+
+    const decrementHandler = () => {
+        dispatch(updateCartItem({user : user.userId, product : _id, operation : "decrement"}))
+    }
+
     const removeCartItemHandler = () => {
         console.log("Clicked")
         dispatch(removeCartItem({user : user.userId, product : _id}))
     }
+
+
     return(
         <div className='checkout-item-container'>
             <div className='image-container'>
@@ -19,11 +30,11 @@ const CheckOutItem = ({cartItem, products}) => {
             </div>
             <span className='name'>{name}</span>
             <span className='quantity'>
-                <div className='arrow' >
+                <div onClick={decrementHandler} className='arrow' >
                     &#10094;
                 </div>
                 <span className='value'>{quantity}</span>
-                <div className='arrow' >
+                <div onClick={incrementHandler} className='arrow' >
                     &#10095;
                 </div>
                 </span>

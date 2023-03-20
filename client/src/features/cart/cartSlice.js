@@ -33,6 +33,17 @@ export const addCartItem = createAsyncThunk('cart/addCartItem', async({user, pro
     }
 })
 
+export const updateCartItem = createAsyncThunk('cart/updateCartItem', async({user, product, operation}) => {
+    try{
+        const response = await axios.patch(`${BASE_URL}/api/v1/cart/updateCartItem`, {user, product, operation})
+        console.log(response)
+        return response.data
+    }
+    catch(error){
+        return error.response
+    }
+})
+
 export const removeCartItem = createAsyncThunk('cart/removeCartItem', async({user, product}) => {
     // console.log(user, product)
     try{
@@ -77,6 +88,17 @@ const cartSlice = createSlice({
             
         })
         .addCase(addCartItem.rejected, (state, action) => {
+            state.error = action.error.message
+            state.status = 'failed'
+        })
+        .addCase(updateCartItem.fulfilled, (state, action) => {
+            state.cart = action.payload.products
+            state.count = action.payload.count
+            state.total = action.payload.total
+            state.status = 'successfull'
+            
+        })
+        .addCase(updateCartItem.rejected, (state, action) => {
             state.error = action.error.message
             state.status = 'failed'
         })

@@ -8,24 +8,19 @@ import CartIcon from '../../components/cart-icon/cart-icon.component';
 import './navigation.styles.css';
 
 
-
 const Navigation = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userLoggedIn = useSelector(userStatus) === "loggedIn"
+
+
     const logOutHandler = () => {
         dispatch(logOutUser())
         setTimeout(() => {
             navigate('/')
         }, 1000)
     }
-    // const {currentUser, setCurrentUser} = useContext(UserContext)
-    // const {isCartOpen} = useContext(CartContext)
 
-    // const signOutHandler = async () => {
-    //     const res = await signOutUser();
-    //     setCurrentUser(null);
-    // }
     return (
     <Fragment>
       <div className='navigation'>
@@ -52,11 +47,10 @@ const Navigation = () => {
                 </Link>)
             }
             
-            <Link className="nav-link">
+            <Link className="nav-link" to="/checkout">
                 <CartIcon/>
             </Link>
         </div>
-        {/* {isCartOpen && <CartDropdown/>} */}
       </div>
       <Outlet/>
     </Fragment>
