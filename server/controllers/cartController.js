@@ -22,6 +22,7 @@ const addCartItem = async (req, res) => {
     const userId = req.body.user // assuming user ID is available in req.user.id
   const productId = req.body.product
   const quantity = req.body.quantity || 1
+  console.log(quantity)
   const productPrice = (await Product.findOne({_id : productId})).price
   try {
     let cart = await Cart.findOne({ user: userId })
@@ -48,8 +49,8 @@ const addCartItem = async (req, res) => {
         products: [{ product: productId, quantity }]
       })
     }
-    cart.total += productPrice
-    cart.count++
+    cart.total += productPrice * quantity
+    cart.count += quantity
     // Save the cart and return the updated cart as the response
     await cart.save()
     console.log(cart)

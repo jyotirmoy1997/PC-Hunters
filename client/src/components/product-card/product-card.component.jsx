@@ -1,21 +1,17 @@
 import './product-card.styles.css'
-import {useDispatch, useSelector} from "react-redux"
-import { selectUser } from '../../features/user/userSlice'
-import { addCartItem } from '../../features/cart/cartSlice'
-
+import { useNavigate } from 'react-router'
 
 const ProductCard = ({product}) => {
-    const dispatch = useDispatch()
-    const user = useSelector(selectUser)
+    const navigate = useNavigate()
     const {name, image, price} = product
-    const addProductToCart = () => {
-        dispatch(addCartItem({user : user.userId, product : product._id, quantity : 1}))
+    const navigateToProductPage = () => {
+        navigate(`/product/${product._id}`)
     }
     return(
         <div className="product-card-container" >
-            <div className='product-card-box'>
+
+            <div onClick={navigateToProductPage} className='product-card-box'>
                 <img src={image} alt="" />
-                <button onClick={addProductToCart} className='el7'>Add to Cart</button>
             </div>
             <div className="product-card-footer">
                 <span>

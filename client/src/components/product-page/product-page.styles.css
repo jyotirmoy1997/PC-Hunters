@@ -1,0 +1,22 @@
+.product-page-outer{
+    width: 100%;
+}
+
+.product-page-wrapper{
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info-container{
+    display: flex;
+    gap: 1em;
+}
+
+.quantity-info{
+    display: flex;
+    
+}
