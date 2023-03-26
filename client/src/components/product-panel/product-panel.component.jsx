@@ -1,15 +1,30 @@
 import { categories } from "../../data/categories"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import {useSelector} from "react-redux"
+import { selectProducts } from "../../features/products/productSlice"
+import AdminProductCard from "../admin-product-card/admin-product-card"
+import ProductAddForm from "../product-add-form/product-add-form.component"
 import "./product-panel.styles.css"
 
 const ProductPanel = () => {
+    const products = useSelector(selectProducts)
     const [showCategory, setShowCategory] = useState(false)
     const [currentCategory, setCurrentCategory] = useState(null)
+    const [currentProducts, setCurrentProducts] = useState([])
+    const [updateProductFlag, setUpdateProductFlag] = useState(false)
+
     const navigateToCategory = (category) => {
         setShowCategory(true)
         setCurrentCategory(category)
     }
-    console.log(currentCategory)
+
+    useEffect(() => {
+        if(currentCategory){
+            let p = products.filter((p) => p.category === currentCategory)
+            setCurrentProducts(p)
+        }
+    }, [currentCategory])
+
     return(
         <div>
             {
@@ -38,7 +53,7 @@ const ProductPanel = () => {
                 showCategory && 
                 <div>
                     <button onClick={() => setShowCategory(false)}>Back</button>
-                    <h2>Category</h2> 
+                    <AdminProductCard products={currentProducts} />
                 </div>
             }
             

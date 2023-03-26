@@ -19,6 +19,26 @@ export const getAllProducts = createAsyncThunk('products/getAllProducts', async(
     }
 })
 
+export const addNewProduct = createAsyncThunk('products/addNewProduct', async(product) => {
+    try{
+        const response = await axios.post(`${BASE_URL}/api/v1/products/createProduct`, {...product})
+        return response.data
+    }
+    catch(error){
+        return error.response
+    }
+})
+
+export const updateProduct = createAsyncThunk('products/updateProduct', async({productId, product}) => {
+    try{
+        const response = await axios.patch(`${BASE_URL}/api/v1/products/${productId}`, {...product})
+        return response.data
+    }
+    catch(error){
+        return error.response
+    }
+})
+
 
 const productsSlice = createSlice({
     name : "Products",
@@ -31,6 +51,23 @@ const productsSlice = createSlice({
             
         })
         .addCase(getAllProducts.rejected, (state, action) => {
+            state.error = action.error.message
+            state.status = 'failed'
+        })
+        .addCase(addNewProduct.fulfilled, (state, action) => {
+            console.log(action.payload)
+            state.products.push(action.payload)
+            state.status = 'successfull'
+            
+        })
+        .addCase(updateProduct.fulfilled, (state, action) => {
+            const id = action.payload._id
+            const productsArray = state.products.filter((p) => p._id !== id)
+            // console.log(productsArray)
+            state.products = [...productsArray, action.payload]
+            
+        })
+        .addCase(addNewProduct.rejected, (state, action) => {
             state.error = action.error.message
             state.status = 'failed'
         })

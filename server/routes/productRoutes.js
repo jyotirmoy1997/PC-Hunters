@@ -18,10 +18,10 @@ const {
 const authMiddlewares = compose([authenticateUser, authorizePermission])
 
 productRoutes.get("/getAllProducts", authenticateUser, getAllProducts)
-productRoutes.post("/createProduct", authMiddlewares, createProduct)
+productRoutes.post("/createProduct", createProduct)
 
 productRoutes.get("/:id", authenticateUser, getSingleProduct)
-productRoutes.patch("/:id", authMiddlewares, updateProduct)
+productRoutes.patch("/:id", updateProduct)
 productRoutes.delete("/:id", authMiddlewares, deleteProduct)
 
 module.exports = productRoutes

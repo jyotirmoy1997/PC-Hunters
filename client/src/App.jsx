@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllProducts } from './features/products/productSlice';
 import { getAllCategories } from './features/categories/categoriesSlice';
-import { selectUser, userStatus} from './features/user/userSlice';
+import { selectUser, userStatus} from './features/user/userSlice'
 import { getAllCartItems } from './features/cart/cartSlice';
 import ProductPage from './components/product-page/product-page.component';
 
