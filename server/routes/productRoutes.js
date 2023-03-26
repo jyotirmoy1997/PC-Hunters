@@ -22,6 +22,6 @@ productRoutes.post("/createProduct", createProduct)
 
 productRoutes.get("/:id", authenticateUser, getSingleProduct)
 productRoutes.patch("/:id", updateProduct)
-productRoutes.delete("/:id", authMiddlewares, deleteProduct)
+productRoutes.delete("/:id", deleteProduct)
 
 module.exports = productRoutes

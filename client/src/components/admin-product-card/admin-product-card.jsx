@@ -1,8 +1,12 @@
 import "./admin-product-card.styles.css"
 import { Fragment, useState } from "react"
 import ProductUpdateForm from "../product-update-form/product-update-form"
+import { deleteProduct } from "../../features/products/productSlice"
+import { useDispatch } from "react-redux"
+import { getAllProducts } from "../../features/products/productSlice"
 
 const AdminProductCard = ({products}) => {
+    const dispatch = useDispatch()
     const [currentProduct, setCurrentProduct] = useState({})
     const [updateFlag, setUpdateFlag] = useState(false)
     console.log(products)
@@ -10,6 +14,14 @@ const AdminProductCard = ({products}) => {
         setUpdateFlag(true)
         setCurrentProduct(product)
     }
+    const deleteHandler = (id) => {
+        const res = confirm("Do you want to delete this product ?")
+        if(res){
+            dispatch(deleteProduct(id))
+            dispatch(getAllProducts())
+        }
+    }
+    console.log("Rendered")
     return(
         <Fragment>
             {
@@ -23,6 +35,7 @@ const AdminProductCard = ({products}) => {
                             <div className='admin-product-card-box'>
                                 <img src={image} alt="" />
                                 <button onClick={() => updateHandler(product)}>Update</button>
+                                
                             </div>
                             <div className="admin-product-card-footer">
                                 <span>
@@ -31,6 +44,7 @@ const AdminProductCard = ({products}) => {
                                 <span className='admin-price-tag'>
                                     ${price}
                                 </span>
+                                <button onClick={() => deleteHandler(_id)}>Delete</button>
                             </div>
                         </div>
                     )})

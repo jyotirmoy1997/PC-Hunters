@@ -39,6 +39,17 @@ export const updateProduct = createAsyncThunk('products/updateProduct', async({p
     }
 })
 
+export const deleteProduct = createAsyncThunk('products/deleteProduct', async(productId) => {
+    try{
+        const response = await axios.delete(`${BASE_URL}/api/v1/products/${productId}`)
+        return response.data
+    }
+    catch(error){
+        return error.response
+    }
+})
+
+
 
 const productsSlice = createSlice({
     name : "Products",
@@ -60,6 +71,10 @@ const productsSlice = createSlice({
             state.status = 'successfull'
             
         })
+        .addCase(addNewProduct.rejected, (state, action) => {
+            state.error = action.error.message
+            state.status = 'failed'
+        })
         .addCase(updateProduct.fulfilled, (state, action) => {
             const id = action.payload._id
             const productsArray = state.products.filter((p) => p._id !== id)
@@ -67,9 +82,8 @@ const productsSlice = createSlice({
             state.products = [...productsArray, action.payload]
             
         })
-        .addCase(addNewProduct.rejected, (state, action) => {
-            state.error = action.error.message
-            state.status = 'failed'
+        .addCase(deleteProduct.fulfilled, (state, action) => {
+            return
         })
     }
 })
