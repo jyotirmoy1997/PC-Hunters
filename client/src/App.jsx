@@ -5,7 +5,7 @@ import LogIn from "./components/log-in/log-in.component"
 import AdminDashBoard from './components/admin-dashboard/admin-dashboard.component';
 import Shop from './routes/shop/shop.routes';
 import CheckOut from './routes/checkout/checkout.component';
-// import PaymentPage from './route/payment-page/payment-page.component';
+import PaymentPage from "./routes/payment-page/payment-page.component"
 import { useSelector, useDispatch } from 'react-redux';
 import { Fragment, useEffect } from 'react';
 import { getAllProducts } from './features/products/productSlice';
@@ -48,10 +48,11 @@ const App = () => {
             <Route path='product'>
               <Route path=':productId' element={<ProductPage/>}/>
             </Route>
+            <Route path='/payment' element={<PaymentPage/>}/>
           </Fragment>)
         }
         
-        {/* <Route path='/payment' element={<PaymentPage/>}/> */}
+        
        </Route>
        <Route path='*' element={<NotFoundRoute />}/>
     </Routes>

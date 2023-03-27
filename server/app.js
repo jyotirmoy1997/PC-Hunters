@@ -6,12 +6,15 @@ const cookieParser = require("cookie-parser")
 const fileUpload = require("express-fileupload")
 const cors = require("cors")
 
+
+
 // Importing Routes
 const authRouter = require("./routes/authRoutes")
 const userRouter = require("./routes/userRoutes")
 const productRouter = require("./routes/productRoutes")
 const categoriesRouter = require("./routes/categoryRoutes")
 const cartRouter = require("./routes/cartRoutes")
+const paymentRouter = require("./routes/paymentRoute")
 
 
 // This is the logger middleware
@@ -52,6 +55,7 @@ server.use("/api/v1/users", userRouter)
 server.use("/api/v1/products", productRouter)
 server.use("/api/v1/categories", categoriesRouter)
 server.use("/api/v1/cart", cartRouter)
+server.use("/api/v1/payment", paymentRouter)
 
 server.use(notFoundMiddleware)
 server.use(errorHandlerMiddleware)

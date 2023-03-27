@@ -25,6 +25,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8",
     "morgan": "^1.10.0",
+    "stripe": "^11.16.0",
+    "uuid": "^9.0.0",
     "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
   },
