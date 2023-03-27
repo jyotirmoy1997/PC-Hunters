@@ -13,6 +13,7 @@ import { getAllCategories } from './features/categories/categoriesSlice';
 import { selectUser, userStatus} from './features/user/userSlice'
 import { getAllCartItems } from './features/cart/cartSlice';
 import ProductPage from './components/product-page/product-page.component';
+import NotFoundRoute from "./routes/not-found/not-found.routes"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -38,6 +39,7 @@ const App = () => {
           (role === 'admin') ? 
           (<Fragment>
             <Route path='/admin' element={<AdminDashBoard/>}/>
+            <Route index={true} element={<Home/>}/>
           </Fragment> ) : (
           <Fragment>
             <Route index={true} element={<Home/>}/>
@@ -48,8 +50,10 @@ const App = () => {
             </Route>
           </Fragment>)
         }
+        
         {/* <Route path='/payment' element={<PaymentPage/>}/> */}
        </Route>
+       <Route path='*' element={<NotFoundRoute />}/>
     </Routes>
   );
 }
