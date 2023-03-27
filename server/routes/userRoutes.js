@@ -14,7 +14,7 @@ const {
 
 const authMiddlewares = compose([authenticateUser, authorizePermission])
 
-userRouter.get("/getAllUser", authMiddlewares, getAllUsers)
+userRouter.get("/getAllUsers", getAllUsers)
 userRouter.get("/showCurrentUser", authenticateUser, showCurrentUser)
 userRouter.patch("/updateUser", authenticateUser, updateUser)
 userRouter.patch("/updateUserPassword", authenticateUser, updateUserPassword)

@@ -7,7 +7,7 @@ import Shop from './routes/shop/shop.routes';
 import CheckOut from './routes/checkout/checkout.component';
 // import PaymentPage from './route/payment-page/payment-page.component';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { getAllProducts } from './features/products/productSlice';
 import { getAllCategories } from './features/categories/categoriesSlice';
 import { selectUser, userStatus} from './features/user/userSlice'
@@ -16,7 +16,7 @@ import ProductPage from './components/product-page/product-page.component';
 
 const App = () => {
   const dispatch = useDispatch()
-  const {userId} = useSelector(selectUser)
+  const {userId, role} = useSelector(selectUser)
   const userStat = useSelector(userStatus)
   useEffect(() => {
     dispatch(getAllCategories())
@@ -24,7 +24,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    if(userStat === "loggedIn"){
+    if(userStat === "loggedIn" && role === 'user'){
       dispatch(getAllCartItems(userId))
       console.log("Called")
     }
@@ -33,14 +33,21 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Navigation/>}>
-        <Route index={true} element={<Home/>}/>
-        <Route path='/log-in' element={<LogIn/>}/>
-        <Route path='/admin' element={<AdminDashBoard/>}/>
-        <Route path='/shop/*' element={<Shop/>}/> 
-        <Route path='/checkout' element={<CheckOut/>}/>
-        <Route path='product'>
-          <Route path=':productId' element={<ProductPage/>}/>
-        </Route>
+      <Route path='/log-in' element={<LogIn/>}/>
+        {
+          (role === 'admin') ? 
+          (<Fragment>
+            <Route path='/admin' element={<AdminDashBoard/>}/>
+          </Fragment> ) : (
+          <Fragment>
+            <Route index={true} element={<Home/>}/>
+            <Route path='/shop/*' element={<Shop/>}/> 
+            <Route path='/checkout' element={<CheckOut/>}/>
+            <Route path='product'>
+              <Route path=':productId' element={<ProductPage/>}/>
+            </Route>
+          </Fragment>)
+        }
         {/* <Route path='/payment' element={<PaymentPage/>}/> */}
        </Route>
     </Routes>

@@ -89,7 +89,6 @@ const userSlice = createSlice({
     }
 })
 
-
 export const selectUser = (state) => state.users.user
 export const selectAllUser = (state) => state.users.allUsers
 export const userStatus = (state) => state.users.status

@@ -48,7 +48,7 @@ server.get("/", (req, res) => {
 })
 
 server.use("/api/v1/auth", authRouter)
-server.use("/api/v1/user", userRouter)
+server.use("/api/v1/users", userRouter)
 server.use("/api/v1/products", productRouter)
 server.use("/api/v1/categories", categoriesRouter)
 server.use("/api/v1/cart", cartRouter)

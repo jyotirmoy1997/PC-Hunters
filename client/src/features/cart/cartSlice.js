@@ -12,7 +12,6 @@ const initialState = {
 }
 
 export const getAllCartItems = createAsyncThunk('cart/getAllCartItems', async(user) => {
-    console.log(user)
     try{
         const response = await axios.get(`${BASE_URL}/api/v1/cart/getAllCartItems/${user}`)
         return response.data
@@ -67,7 +66,15 @@ export const removeCartItem = createAsyncThunk('cart/removeCartItem', async({use
 const cartSlice = createSlice({
     name : "Cart",
     initialState,
-    reducers : {},
+    reducers : {
+        clearCart : (state) => {
+            state.cart = [],
+            state.status = 'idle',
+            state.count = 0,
+            state.total = 0,
+            state.error = null
+        }
+    },
     extraReducers : (builder) => {
         builder.addCase(getAllCartItems.fulfilled, (state, action) => {
             state.cart = action.payload.products
@@ -117,6 +124,8 @@ const cartSlice = createSlice({
     }
 })
 
+
+export const { clearCart } = cartSlice.actions
 
 export const selectAllCartItems = (state) => state.cart.cart
 export const selectCartCount = (state) => state.cart.count

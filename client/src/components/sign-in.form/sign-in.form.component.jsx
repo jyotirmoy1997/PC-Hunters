@@ -24,7 +24,10 @@ const SignInForm = () => {
 
 
     useEffect(() => {
-        if(userLogStatus){
+        if(userLogStatus && user.role === 'admin'){
+            navigate('/admin')
+        }
+        else if(userLogStatus){
             navigate('/')
         }
     }, [userLogStatus, navigate])
