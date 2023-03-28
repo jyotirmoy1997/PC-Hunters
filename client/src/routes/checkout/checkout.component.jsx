@@ -5,14 +5,24 @@ import {useSelector, useDispatch} from "react-redux"
 import { selectAllCartItems, selectCartTotal } from "../../features/cart/cartSlice";
 import { selectProducts } from "../../features/products/productSlice";
 import { nanoid } from 'nanoid'
+import axios from "axios";
+import { selectUser } from "../../features/user/userSlice";
 
 const CheckOut = () => {
     const cartItems = useSelector(selectAllCartItems)
     const cartTotal = useSelector(selectCartTotal)
     const products = useSelector(selectProducts)
+    const {userId} = useSelector(selectUser)
     const navigate = useNavigate()
-    const paymentRouter = () => {
-        navigate('/payment')
+
+    console.log(cartItems)
+    const makePayment = async (token) => {
+        try {
+            const response = await axios.post("http://localhost:5000/api/v1/payment", { user : userId, products : cartItems})
+            window.location.href = response.data.url
+        } catch (error) {
+            console.log(error)
+        }
     }
     return(
         
@@ -41,7 +51,7 @@ const CheckOut = () => {
             }
             </div>
            <div className="total">${cartTotal}</div>
-           <button className="el7" onClick={paymentRouter}>Go to Payment</button>
+           <button className="el7" onClick={makePayment}>Go to Payment</button>
         </div>
     )
 }

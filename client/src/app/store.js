@@ -5,6 +5,7 @@ import userReducer from '../features/user/userSlice';
 import categoriesReducer from "../features/categories/categoriesSlice"
 import productsReducer from "../features/products/productSlice"
 import cartReducer from "../features/cart/cartSlice"
+import orderReducer from "../features/order/orderSlice"
 import { combineReducers } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   users: userReducer,
   categories : categoriesReducer,
   products : productsReducer,
-  cart : cartReducer
+  cart : cartReducer,
+  order : orderReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

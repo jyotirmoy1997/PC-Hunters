@@ -1,35 +1,22 @@
-// import './payment-page.styles.css'
-import { useState } from "react"
-import StripeCheckout from "react-stripe-checkout"
+import {useSelector, useDispatch} from "react-redux"
+import {selectUser} from "../../features/user/userSlice"
+import { selectAllCartItems } from "../../features/cart/cartSlice"
+import { addNewOrder } from "../../features/order/orderSlice"
 import axios from "axios"
-const stripePublic = import.meta.env.VITE_API_KEY;
-
 
 const PaymentPage = () => {
-    const [products, setProducts] = useState(
-        [
-            {
-                name : "RTX 4090",
-                price : 1000
-            },
-            {
-                name : "RTX 4080",
-                price : 10000
-            }
-        ]
-    )
-
-    const makePayment = async (token) => {
-        try {
-            const response = await axios.post("http://localhost:5000/api/v1/payment", {products})
-            window.location.href = response.data.url
-        } catch (error) {
-            console.log(error)
-        }
+    const dispatch = useDispatch()
+    const user = useSelector(selectUser)
+    const products = useSelector(selectAllCartItems)
+    console.log(user, products)
+    const makeOrder = () => {
+        dispatch(addNewOrder({user, products}))
     }
     return(
     <div className='payment-page-container'>
-        <button onClick={makePayment}>Make Payment</button>
+        <h1>Payment Successful</h1>
+        <button onClick={makeOrder}>Order</button>
+        <button>Go Back to Shopping</button>
     </div>
     )
     
