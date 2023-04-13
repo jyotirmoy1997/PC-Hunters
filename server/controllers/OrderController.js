@@ -5,6 +5,7 @@ const addNewOrder = async (user, products) => {
         const userOrder = await Order.findOne({user : user})
         if(!userOrder){
             const newUserOrder = await Order.create({user : user, products})
+            console.log(newUserOrder)
         }
         else{
             const userOrderMap = new Map()

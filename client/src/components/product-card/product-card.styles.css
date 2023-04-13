@@ -4,6 +4,12 @@
     flex-direction: column;
     height: 450px;
     border: 1px solid black;
+    border-radius: 5px;
+    
+}
+
+.product-card-container:hover{
+    cursor: pointer;
 }
 
 .product-card-container .product-card-box{
@@ -31,6 +37,7 @@
     width: 90%;
     margin: 0 auto;
     font-size: 20px;
+    background-color: white;
 }
 
 .product-card-container .product-card-footer .price-tag{

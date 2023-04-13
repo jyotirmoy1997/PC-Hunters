@@ -35,17 +35,20 @@ const ProductPage = () => {
                 <div className="product-info-container">
                     <img src={product.image} alt="" />
                     <div>
-                        <h3>{product.description}</h3>
-                        <div>
+                        <h3 className="product-description">{product.description}</h3>
+                        <div className="quantity-info-wrap" >
                             <h3>Select Quantity</h3>
-                            <div className="quantity-info">
-                                <button onClick={decrementQuantity}>-</button>
-                                <div>{quantity}</div>
-                                <button onClick={incrementQuantity}>+</button>
+                            <div className="quantity-info-outer">
+                                <div className="quantity-info">
+                                    <button onClick={decrementQuantity}>-</button>
+                                    <div>{quantity}</div>
+                                    <button onClick={incrementQuantity}>+</button>
+                                </div>
+                                <h3>Price : ${product.price * quantity}</h3>
                             </div>
-                            <h3>Price : ${product.price * quantity}</h3>
+                            <button id="cart-add-btn" onClick={addProductToCart}>Add to Cart</button>
                         </div>
-                        <button onClick={addProductToCart}>Add to Cart</button>
+                        
                     </div>
                 </div>
             </div>

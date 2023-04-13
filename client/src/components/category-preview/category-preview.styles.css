@@ -7,9 +7,15 @@
   }
 
   .category-preview-container .title {
-    font-size: 28px;
+    font-size: 35px;
     margin-bottom: 25px;
     cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+
+  .category-preview-container .title:hover{
+    color:#344E86;
   }
   
   .category-preview-container .preview {

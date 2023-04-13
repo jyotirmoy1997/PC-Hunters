@@ -19,6 +19,12 @@
     height: 150px;
     width: 150px;
     text-align: center;
+    border-radius: 5px;
+   
+  }
+
+  .directory-body-container a{
+    text-decoration: none;
   }
   
   .directory-container:nth-child(4), .directory-container:nth-child(5){
