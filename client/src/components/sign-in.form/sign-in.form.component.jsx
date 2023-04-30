@@ -82,7 +82,7 @@ const SignInForm = () => {
         <div >
             <form className="wrapper-sign-in" action="" onSubmit={onSubmitHandler}>
 
-                <div className="el1">I already have an account</div>
+                <div className="el1">Sign-In</div>
 
                 <div className="el2">Sign-In with your email and password</div>
 
@@ -108,7 +108,6 @@ const SignInForm = () => {
 
                 
                 <button className="el7" onClick={onSubmitHandler}>Log-In</button>
-                {/* <Button   content={"Sign-In"} /> */}
 
             </form>
             

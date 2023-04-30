@@ -2,6 +2,7 @@ import './checkout-item.styles.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeCartItem, updateCartItem } from '../../features/cart/cartSlice'
 import { selectUser } from '../../features/user/userSlice'
+import deleteIcon from "../../../public/icons/trash.png"
 
 const CheckOutItem = ({cartItem, products}) => {
     const dispatch = useDispatch()
@@ -39,7 +40,9 @@ const CheckOutItem = ({cartItem, products}) => {
                 </div>
                 </span>
             <span className='price'>{price}</span>
-            <div className='remove-button' onClick={removeCartItemHandler} >&#10005;</div>
+            <div className='remove-button' onClick={removeCartItemHandler} >
+                <img src={deleteIcon} alt="" height={30} width={30} />
+            </div>
         </div>
     )
 

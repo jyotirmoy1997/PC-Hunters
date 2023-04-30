@@ -7,6 +7,7 @@ import { selectProducts } from "../../features/products/productSlice";
 import { nanoid } from 'nanoid'
 import axios from "axios";
 import { selectUser } from "../../features/user/userSlice";
+import { Fragment } from "react";
 
 const CheckOut = () => {
     const cartItems = useSelector(selectAllCartItems)
@@ -25,34 +26,42 @@ const CheckOut = () => {
         }
     }
     return(
-        
-        <div className="checkout-container">
-            <div className="checkout-header">
-                <div className="header-block">
-                    <span>Product</span>
-                </div>
-                <div className="header-block">
-                    <span>Description</span>
-                </div>
-                <div className="header-block">
-                    <span>Quantity</span>
-                </div>
-                <div className="header-block">
-                    <span>Price</span>
-                </div>
-                <div className="header-block">
-                    <span>Remove</span>
-                </div>
-            </div>
-
-            <div>
+        <Fragment>
             {
-                cartItems.map((cartItem) => <CheckOutItem key={nanoid()} products={products} cartItem={cartItem} />)
+                cartItems.length === 0 ? 
+                <div className="empty-checkout-page">
+                    <h1>Cart is Empty</h1>
+                    <button className="back-to-shop" onClick={() => navigate("/shop")}>Go Back to Shopping</button>
+                </div> :
+                <div className="checkout-container">
+                    <div className="checkout-header">
+                        <div className="header-block">
+                            <span>Product</span>
+                        </div>
+                        <div className="header-block">
+                            <span>Description</span>
+                        </div>
+                        <div className="header-block">
+                            <span>Quantity</span>
+                        </div>
+                        <div className="header-block">
+                            <span>Price (&#8377;)</span>
+                        </div>
+                        <div className="header-block">
+                            <span>Remove</span>
+                        </div>
+                    </div>
+                    <div className="checkout-items">
+                        {
+                            cartItems.map((cartItem) => <CheckOutItem key={nanoid()} products={products} cartItem={cartItem} />)
+                        }
+                    </div>
+                    <div className="total">&#8377; {cartTotal}</div>
+                    <button className="payment-btn" onClick={makePayment}>Go to Payment</button>
+                </div>
             }
-            </div>
-           <div className="total">${cartTotal}</div>
-           <button className="el7" onClick={makePayment}>Go to Payment</button>
-        </div>
+        </Fragment>
+        
     )
 }
 

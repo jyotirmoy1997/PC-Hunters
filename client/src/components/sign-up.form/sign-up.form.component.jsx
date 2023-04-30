@@ -55,7 +55,7 @@ const SignUpForm = () => {
     return(
         <div>
             <form className="wrapper-signup" action="" onSubmit={onSubmitHandler}>
-                <div className="it1">I do not have an account</div>
+                <div className="it1">Sign-Up</div>
                 <div className="it2">Sign-Up with your email and password</div>
                 <label className="it3" htmlFor="">Name</label>
                 <input className="it4" type="text" 

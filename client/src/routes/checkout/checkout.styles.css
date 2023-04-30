@@ -1,5 +1,6 @@
 .checkout-container {
-    width: 55%;
+    width: 95%;
+    max-width: 800px;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -31,3 +32,43 @@
   .checkout-container .checkout-header .header-block:last-child{
     width: 8%;
   }
+
+.empty-checkout-page{
+  padding: 2em;
+  width: 80%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.back-to-shop{
+  height: 50px;
+  width: 200px;
+  background-color: #303f9f;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.back-to-shop:hover{
+  cursor: pointer;
+}
+
+.checkout-items{
+  width: 100%;
+}
+
+.payment-btn{
+  background-color: #006A4E;
+  color: white;
+  height: 50px;
+  width: 200px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.payment-btn:hover{
+  cursor: pointer;
+}

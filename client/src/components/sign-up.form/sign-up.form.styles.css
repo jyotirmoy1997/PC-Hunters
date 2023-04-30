@@ -6,8 +6,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    grid-gap: 10px;
-    height: 500px;
+    grid-gap: 15px;
+    height: 600px;
     padding: 4em;
 }
 
@@ -46,17 +46,13 @@
 
 .it11{
     grid-row: 12/13;
-    width: 200px;
-    margin-top: -30px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 150px;
+    margin: 0 auto;
     background-color: black;
     color: white;
     border-radius: 2px;
-    font-family: 'Saira', sans-serif;
-    text-transform: uppercase;
-    font-size: 15px;
+    font-size: 18px;
+    height: 40px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2)
 }
 

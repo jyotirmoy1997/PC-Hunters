@@ -18,7 +18,7 @@ const ProductPage = () => {
         dispatch(addCartItem({user : user.userId, product : product._id, quantity : quantity}))
     }
 
-    console.log(product)
+    console.log(Object.keys(user).length === 0)
     const incrementQuantity = () => {
         setQuantity(quantity + 1)
     }
@@ -46,7 +46,11 @@ const ProductPage = () => {
                                 </div>
                                 <h3>Price : ${product.price * quantity}</h3>
                             </div>
-                            <button id="cart-add-btn" onClick={addProductToCart}>Add to Cart</button>
+                            {
+                                Object.keys(user).length === 0 ? 
+                                <button id="cart-add-btn" onClick={() => navigate('/log-in')}>Sign In to Buy</button> :
+                                <button id="cart-add-btn" onClick={addProductToCart}>Add to Cart</button>
+                            }
                         </div>
                         
                     </div>

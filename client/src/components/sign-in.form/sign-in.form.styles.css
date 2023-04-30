@@ -10,7 +10,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 1fr);
     height: 350px;
-    grid-gap: 10px;
+    grid-gap: 20px;
     padding: 4em;
 }
 
@@ -31,13 +31,17 @@
     font-weight: bold;
 }
 .el7, .el8{
-    grid-row: 8/9;
-    margin-top: -30px;
-    margin-bottom: 20px;
+    grid-row: 7/8;
+    grid-column: 1/-1;
+    margin: 0 auto;
+    height: 40px;
+    width: 100px;
+    color: white;
+    background-color: black;
+    font-size: 18px;
 }
 
 .el4, .el6{
-    /* border-radius: 5px; */
     height: 30px;
     border-top: none;
     border-left: none;
@@ -55,6 +59,12 @@
 .el8{
     box-shadow: none;
 }
+
+.el7:hover{
+    background-color: #303f9f;
+    cursor: pointer;
+}
+
 
 #sign-in-email::after, #sign-in-password::after{
     content: attr(data);

@@ -79,7 +79,7 @@ server.post('/webhook', express.raw({type: '*/*'}), async (req, res) => {
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
       data = event.data.object
-
+      console.log("Event Data :: " + data)
     } catch (err) {
       console.log(err);
       return res.sendStatus(400);
@@ -88,25 +88,25 @@ server.post('/webhook', express.raw({type: '*/*'}), async (req, res) => {
     if (event.type === 'checkout.session.completed') {
 
       console.log("Payment Successfull")
-      try {
-        const customer = await stripe.customers.retrieve(data.customer)
-        console.log(customer.metadata)
-        const {user} = customer.metadata
-        const userCart = await Cart.findOne({user})
+      // try {
+      //   const customer = await stripe.customers.retrieve(data.customer)
+      //   console.log(customer.metadata)
+      //   const {user} = customer.metadata
+      //   const userCart = await Cart.findOne({user})
 
 
-        addNewOrder(user, userCart.products)
+      //   addNewOrder(user, userCart.products)
 
-        userCart.products.splice(0, userCart.products.length)
-        userCart.count = 0
-        userCart.total = 0
+      //   userCart.products.splice(0, userCart.products.length)
+      //   userCart.count = 0
+      //   userCart.total = 0
 
-        await userCart.save()
+      //   await userCart.save()
         
 
-      } catch (err) {
-        console.log(err);
-      }
+      // } catch (err) {
+      //   console.log(err);
+      // }
 
       
     } else if (event.type === 'checkout.session.async_payment_failed') {
