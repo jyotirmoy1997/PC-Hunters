@@ -28,7 +28,7 @@ const UserPanel = ({users}) => {
                                 <div key={user._id} className="user-panel-rows">
                                     <span>{user.name}</span>
                                     <span>{user.email}</span>
-                                    <button onClick={() => onCartClickHandler(user)}>Cart</button>
+                                    <button className="dashboard-cart-btn" onClick={() => onCartClickHandler(user)}>Check Cart</button>
                                 </div>
                                 )
                             })
@@ -39,7 +39,7 @@ const UserPanel = ({users}) => {
            {
              cartOpen &&
              <div>
-                <button onClick={() => setCartOpen(false)}>Back</button>
+                <button className="dashboard-btn-back" onClick={() => setCartOpen(false)}>&#8592; Back To Users</button>
                 <DashboardCart user={currentUser._id} />
              </div>
              

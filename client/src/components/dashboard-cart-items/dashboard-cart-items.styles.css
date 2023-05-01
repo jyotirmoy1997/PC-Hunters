@@ -1,0 +1,22 @@
+.dashboard-checkout-item-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-image-container{
+    width: 20%;
+}
+
+.dashboard-image-container img{
+    height: 100%;
+    width: 100%;
+}
+
+.dashboard-checkout-item-container .dashboard-name,
+  .dashboard-quantity,
+  .dashboard-price {
+    width: 17%;
+    text-align: center;
+  }

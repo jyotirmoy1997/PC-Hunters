@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser")
 const fileUpload = require("express-fileupload")
 const cors = require("cors")
 require("dotenv").config()
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 
 
@@ -20,9 +19,9 @@ const orderRouter = require("./routes/orderRoutes")
 const paymentRouter = require("./routes/paymentRoute")
 
 const Cart = require("./model/Cart")
-const Order = require("./model/Order")
+// const Order = require("./model/Order")
 
-const {addNewOrder} = require("./controllers/OrderController")
+// const {addNewOrder} = require("./controllers/OrderController")
 
 
 // This is the logger middleware
@@ -32,11 +31,11 @@ const morgan = require("morgan")
 const server = express()
 const PORT = process.env.PORT || 5000
 
-server.use("/webhook", express.raw({type: "*/*"}))
+server.use("/api/v1/payment/webhook", express.raw({type: "*/*"}))
 server.use(express.json())
 
 // Invoking the logger middleware
-server.use(morgan("tiny"))
+// server.use(morgan("tiny"))
 
 // Invoking CORS middleware
 server.use(cors({
@@ -59,7 +58,7 @@ server.get("/", (req, res) => {
     res.send("This is the Home Route")
 })
 
-const endpointSecret = process.env.ENDPOINT_SECRET // replace with your webhook secret key
+
 
 
 
@@ -71,52 +70,7 @@ server.use("/api/v1/cart", cartRouter)
 server.use("/api/v1/order", orderRouter)
 server.use("/api/v1/payment", paymentRouter)
 
-server.post('/webhook', express.raw({type: '*/*'}), async (req, res) => {
-    const sig = req.headers['stripe-signature'];
-    let event;
-    let data;
-    
-    try {
-      event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
-      data = event.data.object
-      console.log("Event Data :: " + data)
-    } catch (err) {
-      console.log(err);
-      return res.sendStatus(400);
-    }
-  
-    if (event.type === 'checkout.session.completed') {
 
-      console.log("Payment Successfull")
-      // try {
-      //   const customer = await stripe.customers.retrieve(data.customer)
-      //   console.log(customer.metadata)
-      //   const {user} = customer.metadata
-      //   const userCart = await Cart.findOne({user})
-
-
-      //   addNewOrder(user, userCart.products)
-
-      //   userCart.products.splice(0, userCart.products.length)
-      //   userCart.count = 0
-      //   userCart.total = 0
-
-      //   await userCart.save()
-        
-
-      // } catch (err) {
-      //   console.log(err);
-      // }
-
-      
-    } else if (event.type === 'checkout.session.async_payment_failed') {
-      console.log("Payment Cancelled")
-
-      
-    }
-  
-    res.sendStatus(200);
-  });
 
 server.use(notFoundMiddleware)
 server.use(errorHandlerMiddleware)

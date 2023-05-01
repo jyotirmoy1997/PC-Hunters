@@ -1,0 +1,26 @@
+.order-item-container{
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-image-container{
+    width: 20%;
+}
+
+.order-image-container img{
+    width: 100%;
+    height: 100%;
+}
+
+.order-name{
+    width: 20%;
+    text-align: center;
+}
+
+.order-quantity{
+    width: 20%;
+    text-align: center;
+}

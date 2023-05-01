@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";   
+import "./product-update-form.styles.css"
      
 
 const categories = [
@@ -43,7 +44,7 @@ const ProductUpdateForm = ({product}) => {
 
 
     return(
-        <div>
+        <div className='product-update-form-wrapper'>
             <form action="">
                 <label htmlFor="">Name</label>
                 <input type="text" name='name' value={formData.name} onChange={onChangeHandler} />

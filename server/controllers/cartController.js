@@ -2,7 +2,7 @@ const Cart = require("../model/Cart")
 const Product = require("../model/Product")
 
 const getAllCartItems = async (req, res) => {
-    console.log(req.params)
+    // console.log(req.params)
     const {userId} = req.params
     try {
       const cart = await Cart.findOne({user : userId})
@@ -13,7 +13,7 @@ const getAllCartItems = async (req, res) => {
         return res.status(200).json(cart)
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       return res.status(500).json({ error: "Server error" })
     }
 }
@@ -22,7 +22,7 @@ const addCartItem = async (req, res) => {
     const userId = req.body.user // assuming user ID is available in req.user.id
   const productId = req.body.product
   const quantity = req.body.quantity || 1
-  console.log(quantity)
+  // console.log(quantity)
   const productPrice = (await Product.findOne({_id : productId})).price
   try {
     let cart = await Cart.findOne({ user: userId })
@@ -53,10 +53,10 @@ const addCartItem = async (req, res) => {
     cart.count += quantity
     // Save the cart and return the updated cart as the response
     await cart.save()
-    console.log(cart)
+    // console.log(cart)
     return res.status(201).json(cart)
   } catch (err) {
-    console.error(err)
+    // console.error(err)
     return res.status(500).json({ error: "Server error" })
   }
     
@@ -64,7 +64,7 @@ const addCartItem = async (req, res) => {
 
 const updateCartItem = async (req, res) => {
   const {user, product, operation} = req.body
-  console.log(user, product, operation)
+  // console.log(user, product, operation)
   const productPrice = (await Product.findOne({_id : product})).price
   try {
     let cart = await Cart.findOne({ user: user })
@@ -87,25 +87,25 @@ const updateCartItem = async (req, res) => {
         cart.products.splice(productIndex, 1)
       }
       await cart.save()
-      console.log(cart)
+      // console.log(cart)
       return res.status(200).json(cart)
       
     } else {
-      console.log("Product Does Not Exist")
+      // console.log("Product Does Not Exist")
       return res.status(500).json({ error: "Server error" })
     }
     
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     return res.status(500).json({ error: "Server error" })
   }
 }
 
 const removeCartItem = async (req, res) => {
-  console.log("Hit")
+  // console.log("Hit")
   const {user, product} = req.body
   const productPrice = (await Product.findOne({_id : product})).price
-  console.log(productPrice)
+  // console.log(productPrice)
   // res.send("Okay")
   try {
     let cart = await Cart.findOne({ user: user })
@@ -121,11 +121,11 @@ const removeCartItem = async (req, res) => {
       return res.status(200).json(cart)
       
     } else {
-      console.log("Product Does Not Exist")
+      // console.log("Product Does Not Exist")
       return res.status(500).json({ error: "Server error" })
     }
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     return res.status(500).json({ error: "Server error" })
   }
   

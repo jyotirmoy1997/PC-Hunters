@@ -5,9 +5,9 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 
 const payment = async (req, res) => {
-
+        console.log("Payment Hit")
         const {user, products} = req.body
-        console.log(products)
+        // console.log(products)
 
         try {
             const allProducts = await Product.find({});
@@ -19,7 +19,7 @@ const payment = async (req, res) => {
               return acc;
             }, []);
 
-            console.log(productsToPurchase)
+            // console.log(productsToPurchase)
 
             const customer = await stripe.customers.create({
                 metadata : {
@@ -48,13 +48,15 @@ const payment = async (req, res) => {
                         })
                     })
             
-            console.log(session.url)
+            // console.log(session.url)
             res.status(200).json({url : session.url})
         }
         catch(err){
-            console.log(err)
+            console.log("Error !" + err)
         }
     }
+
+
 
 
 module.exports = payment

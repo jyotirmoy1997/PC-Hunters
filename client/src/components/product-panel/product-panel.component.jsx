@@ -51,8 +51,8 @@ const ProductPanel = () => {
             }
             {
                 showCategory && 
-                <div>
-                    <button onClick={() => setShowCategory(false)}>Back</button>
+                <div className="product-panel-alternate" >
+                    <button className="dashboard-btn-back" onClick={() => setShowCategory(false)}> &#8592; Back</button>
                     <AdminProductCard products={currentProducts} />
                 </div>
             }

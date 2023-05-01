@@ -1,0 +1,5 @@
+.product-update-form-wrapper form{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}

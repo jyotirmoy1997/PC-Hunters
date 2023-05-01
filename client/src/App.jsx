@@ -12,8 +12,10 @@ import { getAllProducts } from './features/products/productSlice';
 import { getAllCategories } from './features/categories/categoriesSlice';
 import { selectUser, userStatus} from './features/user/userSlice'
 import { getAllCartItems } from './features/cart/cartSlice';
+import { getAllOrderItems } from './features/order/orderSlice';
 import ProductPage from './components/product-page/product-page.component';
 import NotFoundRoute from "./routes/not-found/not-found.routes"
+import Orders from './routes/orders/orders.component';
 
 const App = () => {
   const dispatch = useDispatch()
@@ -27,6 +29,7 @@ const App = () => {
   useEffect(() => {
     if(userStat === "loggedIn" && role === 'user'){
       dispatch(getAllCartItems(userId))
+      dispatch(getAllOrderItems(userId))
       console.log("Called")
     }
   }, [userStat])
@@ -45,6 +48,7 @@ const App = () => {
             <Route index={true} element={<Home/>}/>
             <Route path='/shop/*' element={<Shop/>}/> 
             <Route path='/checkout' element={<CheckOut/>}/>
+            <Route path='/orders' element={<Orders/>}/>
             <Route path='product'>
               <Route path=':productId' element={<ProductPage/>}/>
             </Route>

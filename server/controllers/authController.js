@@ -6,7 +6,7 @@ const createTokenUser = require("../utils/createTokenUser")
 
 const register = async (req, res) => {
     const {name, email, password} = req.body
-    console.log(name, email, password)
+    // console.log(name, email, password)
     const isDuplicateEmail = await User.findOne({email})
     const newUser = {
         name,
@@ -35,7 +35,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     const {email, password} = req.body
-    console.log(email, password)
+    // console.log(email, password)
     const user = await User.findOne({email : email})
     if(!user){
         return res.status(StatusCodes.BAD_REQUEST).json({msg : "User doesn't exist"})

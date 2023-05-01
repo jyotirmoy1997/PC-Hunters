@@ -33,9 +33,8 @@ const AdminProductCard = ({products}) => {
                         <div key={_id} className="admin-product-card-container" >
                 
                             <div className='admin-product-card-box'>
-                                <img src={image} alt="" />
-                                <button onClick={() => updateHandler(product)}>Update</button>
-                                
+
+                                <img className="product-card-bg" src={image} alt="" />
                             </div>
                             <div className="admin-product-card-footer">
                                 <span>
@@ -44,6 +43,9 @@ const AdminProductCard = ({products}) => {
                                 <span className='admin-price-tag'>
                                     ${price}
                                 </span>
+                            </div>
+                            <div>
+                                <button onClick={() => updateHandler(product)}>Update</button>
                                 <button onClick={() => deleteHandler(_id)}>Delete</button>
                             </div>
                         </div>
@@ -56,7 +58,7 @@ const AdminProductCard = ({products}) => {
                {
                     updateFlag && 
                     <div>
-                            <button onClick={() => setUpdateFlag(false)}>Back to Product</button>
+                            <button  onClick={() => setUpdateFlag(false)}> &#8592; Back to Product</button>
                             <ProductUpdateForm product={currentProduct}/>
                     </div> 
 

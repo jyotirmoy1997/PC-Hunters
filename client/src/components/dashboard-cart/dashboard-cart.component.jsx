@@ -5,6 +5,8 @@ import { selectProducts } from "../../features/products/productSlice";
 import { nanoid } from 'nanoid'
 import DashboardCartItem from "../dashboard-cart-items/dashboard-cart-items.component";
 import { useEffect } from "react";
+import { Fragment } from "react";
+import "./dashboard-cart.styles.css"
 
 const DashboardCart = ({user}) => {
     console.log(user)
@@ -21,31 +23,37 @@ const DashboardCart = ({user}) => {
 
     console.log(cartItems, cartTotal, products)
     return(
-        
-        <div className="checkout-container">
-            <h2>Cart</h2>
-            <div className="checkout-header">
-                <div className="header-block">
-                    <span>Product</span>
-                </div>
-                <div className="header-block">
-                    <span>Description</span>
-                </div>
-                <div className="header-block">
-                    <span>Quantity</span>
-                </div>
-                <div className="header-block">
-                    <span>Price</span>
-                </div>
-            </div>
+        <Fragment>
 
-            <div>
             {
-                cartItems.map((cartItem) => <DashboardCartItem key={nanoid()} products={products} cartItem={cartItem} />)
+                cartItems.length === 0 ? <h2>Cart is Empty For Current User</h2> :
+                    <div className="checkout-container">
+                        <h2>Cart</h2>
+                        <div className="checkout-header">
+                            <div className="header-block">
+                                <span>Product</span>
+                            </div>
+                            <div className="header-block">
+                                <span>Description</span>
+                            </div>
+                            <div className="header-block">
+                                <span>Quantity</span>
+                            </div>
+                            <div className="header-block">
+                                <span>Price</span>
+                            </div>
+                        </div>
+
+                        <div className="dashboard-cart-items">
+                        {
+                            cartItems.map((cartItem) => <DashboardCartItem key={nanoid()} products={products} cartItem={cartItem} />)
+                        }
+                        </div>
+                        <div className="total">${cartTotal}</div>
+                    </div>
             }
-            </div>
-           <div className="total">${cartTotal}</div>
-        </div>
+        </Fragment>
+        
     )
 }
 

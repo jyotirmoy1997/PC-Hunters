@@ -1,3 +1,4 @@
+import "./dashboard-cart-items.styles.css"
 
 const DashboardCartItem = ({cartItem, products}) => {
     const {product, quantity} = cartItem
@@ -5,15 +6,13 @@ const DashboardCartItem = ({cartItem, products}) => {
 
 
     return(
-        <div className='checkout-item-container'>
-            <div className='image-container'>
+        <div className='dashboard-checkout-item-container'>
+            <div className='dashboard-image-container'>
                 <img src={image} alt="" />
             </div>
-            <span className='name'>{name}</span>
-            <span className='quantity'>
-                <span className='value'>{quantity}</span>
-                </span>
-            <span className='price'>{price}</span>
+            <div className='dashboard-name'>{name}</div>
+            <div className='dashboard-quantity'>{quantity}</div>
+            <div className='dashboard-price'>{price}</div>
         </div>
     )
 

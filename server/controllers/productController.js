@@ -5,12 +5,12 @@ const CustomError = require("../errors/index")
 // const productData = require("../mockData/products.json")
 
 const createProduct = async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     // res.send("Okay")
     // req.body.user = req.user.userId
     try {
         const product = await Product.create({...req.body})
-        console.log(product)
+        // console.log(product)
         const category = await Categories.findOneAndUpdate({name : product.category},
             {
                 $push : {products : product._id}
@@ -39,8 +39,8 @@ const getSingleProduct = async (req, res) => {
 }
 
 const updateProduct = async (req, res) => {
-    console.log(req.params)
-    console.log(req.body)
+    // console.log(req.params)
+    // console.log(req.body)
     const product = await Product.findOneAndUpdate({_id: req.params.id}, req.body, {
         new : true
     })
@@ -51,7 +51,7 @@ const updateProduct = async (req, res) => {
 }
 
 const deleteProduct = async (req, res) => {
-    console.log(req.params.id)
+    // console.log(req.params.id)
     const product = await Product.findOne({_id: req.params.id})
     if(!product){
         return res.status(404).json({ error: "Product Not Found" })
