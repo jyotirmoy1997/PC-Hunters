@@ -1,9 +1,9 @@
-import reactIcon from "../../../assets/icons/react-icon.png"
-import mongoDBIcon from "../../../assets/icons/mongodb-icon.png"
-import expressIcon from "../../../assets/icons/express-js-icon.png"
-import nodeIcon from "../../../assets/icons/node-js-icon.png"
-import linkedInIcon from "../../../assets/icons/linkedIn.png"
-import githubIcon from "../../../assets/icons/github.png"
+import reactIcon from "../../assets/icons/react-icon.png"
+import mongoDBIcon from "../../assets/icons/mongodb-icon.png"
+import expressIcon from "../../assets/icons/express.png"
+import nodeIcon from "../../assets/icons/node-js-icon.png"
+import linkedInIcon from "../../assets/icons/linkedIn.png"
+import githubIcon from "../../assets/icons/github.png"
 import "./footer.styles.css"
 
 const Footer = () => {

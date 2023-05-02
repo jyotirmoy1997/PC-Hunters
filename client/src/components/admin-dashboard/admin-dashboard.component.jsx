@@ -6,8 +6,8 @@ import "./admin-dashboard.styles.css"
 import UserPanel from "../user-panel/user-panel.component"
 import ProductPanel from "../product-panel/product-panel.component"
 import { useState, useEffect } from "react"
-import usersLogo from "../../assets/users.png"
-import productsLogo from "../../assets/products.png"
+import usersLogo from "../../assets/icons/users.png"
+import productsLogo from "../../assets/icons/products.png"
 
 const AdminDashBoard = () => {
     const dispatch = useDispatch()
@@ -23,10 +23,14 @@ const AdminDashBoard = () => {
     useEffect(() => {
         dispatch(getAllUsers())
     }, [])
+    console.log(window.innerWidth)
     return(
         <div className="admin-dashboard-outer">
             <div className="admin-dashboard-sidebar">
-                <h1>Welcome Admin</h1>
+                {
+                    window.innerWidth < 500 ? null : <h1>Welcome Admin</h1>
+                }
+                
                 <div className="sidebar-components" onClick={setUserPage}>
                     <img src={usersLogo} height={50} width={50} />
                     <h4 >Users</h4>

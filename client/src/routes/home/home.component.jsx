@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import Footer from "../../components/footer/footer.component";
 import "./home.styles.css"
 
 
@@ -19,6 +20,7 @@ const Home = () => {
         <div className="home-wrapper">
             <h1>Gear Up Your Gaming Rig with PC Hunters !</h1>
             <Directory categories={categories} />
+            <Footer/>
         </div>
     )
 }

@@ -1,12 +1,16 @@
 .admin-dashboard-outer{
     width: 100%;
-    height: 100vh;
+    height: 1500px;
     display: flex;
+    justify-items: space-between;
+    /* align-items: stretch;
+    justify-items: stretch; */
+    /* background-color: chartreuse; */
 }
 
 .admin-dashboard-sidebar{
-    width: 18%;
-    height: 100vh;
+    width: 20%;
+    height: 100%;
     background-color: #262C31;
     padding: 1em;
     margin: 0 auto;
@@ -15,6 +19,7 @@
     align-items: center;
     gap: 1.5em;
     color: white;
+    overflow-x: hidden;
 }
 
 .admin-dashboard-sidebar h1{
@@ -38,10 +43,36 @@
 }
 
 .admin-dashboard-main{
-    width: 82%;
+    width: 80%;
+    height: 100%;
     /* background-color: chocolate; */
 }
 
 .admin-dashboard-main h1{
     text-align: center;
+}
+
+
+@media (max-width : 500px){
+    .admin-dashboard-outer{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+    .admin-dashboard-sidebar{
+        width: 100%;
+        height: auto;
+        background-color: #262C31;
+        padding: 1em;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.5em;
+        color: white;
+    }
+    .admin-dashboard-main{
+        width: 100%;
+    }
 }

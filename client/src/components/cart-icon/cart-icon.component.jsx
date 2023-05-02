@@ -1,5 +1,5 @@
 import './cart-icon.styles.css'
-import cartLogo from '../../assets/cart-icon.png'
+import cartLogo from "../../assets/icons/cart-icon.png"
 import {useSelector} from "react-redux"
 import { selectCartCount } from '../../features/cart/cartSlice'
 

@@ -12,21 +12,18 @@ const Orders = () => {
     const userOrders = useSelector(selectOrderItems)
     console.log(userOrders)
     return(
-        <div>
+        <div className="order-page-outer">
             <h1>My Orders</h1>
             <Fragment>
                 {
                     userOrders.length === 0 ? <h2>You don't have any orders</h2> :
                         <div className="checkout-container">
-                            <div className="checkout-header">
-                                <div className="header-block">
-                                    <span>Product</span>
+                            <div className="checkout-header order-ch-head">
+                                <div >Product
                                 </div>
-                                <div className="header-block">
-                                    <span>Description</span>
+                                <div >Description
                                 </div>
-                                <div className="header-block">
-                                    <span>Quantity</span>
+                                <div >Quantity
                                 </div>
                             </div>
                             <div className="order-items">

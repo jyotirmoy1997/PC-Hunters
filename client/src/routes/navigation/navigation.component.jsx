@@ -7,29 +7,37 @@ import Logo from "../../assets/LOGO.png"
 import CartIcon from '../../components/cart-icon/cart-icon.component';
 import './navigation.styles.css';
 import { clearCart } from '../../features/cart/cartSlice';
-
+import { useRef } from 'react';
+import { GrClose } from 'react-icons/gr';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Navigation = () => {
+    const navRef = useRef()
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userLoggedIn = useSelector(userStatus) === "loggedIn"
     const user = useSelector(selectUser)
 
     const logOutHandler = () => {
+        showNavBar()
         dispatch(logOutUser())
         dispatch(clearCart())
         setTimeout(() => {
             navigate('/')
         }, 1000)
     }
-    console.log(user)
+
+    const showNavBar = () => {
+        navRef.current.classList.toggle("responsive-nav")
+    }
+
     return (
     <Fragment>
       <div className='navigation'>
         <Link className="logo-container" to="/">
             <img src={Logo} alt="" srcSet="" height={100} width={262} />
         </Link>
-        <div className='nav-links-container'>
+        <div ref={navRef} className='nav-links-container'>
             {
                 user.role === 'admin' ? 
                 (<Fragment>
@@ -38,35 +46,52 @@ const Navigation = () => {
                     </Link>
                 </Fragment>) :
                 (<Fragment>
-                    <Link className="nav-link" to="/">
+                    <Link className="nav-link" to="/" onClick={showNavBar}>
                         Home
                     </Link>
-                    <Link className="nav-link" to="/shop">
+                    <Link className="nav-link" to="/shop" onClick={showNavBar}>
                         Shop
                     </Link>
-                    <Link className="nav-link" to="/orders">
-                        My Orders
-                    </Link>
+                    
                 </Fragment>)
             }
             {
                 (userLoggedIn) ? 
-                (<Link className="nav-link" onClick={logOutHandler}>
-                    Log Out
-                </Link>) : 
-                (<Link className="nav-link" to="/log-in">
+                (
+                    <Fragment>
+                        {
+                            user.role === 'user' ? 
+                            <Link className="nav-link" to="/orders" onClick={showNavBar}>
+                                My Orders
+                            </Link> : null
+                        }
+                        
+                        <Link className="nav-link" onClick={logOutHandler}>
+                            Log Out
+                        </Link>
+                    </Fragment>
+                ) : 
+                (<Link className="nav-link" to="/log-in" onClick={showNavBar}>
                     Log In
-                </Link>)
+                </Link>
+                
+                
+                )
             }
             {
                  user.role !== 'admin' && 
-                 <Link className="nav-link" to="/checkout">
+                 <Link className="nav-link" to="/checkout" onClick={showNavBar}>
                     <CartIcon/>
                  </Link>
             }
-            
+             <button className="nav-btn nav-close-btn" onClick={showNavBar} >
+                <GrClose/>
+            </button>
             
         </div>
+        <button className="nav-btn" onClick={showNavBar}>
+            <GiHamburgerMenu/>
+        </button>
       </div>
       <Outlet/>
     </Fragment>

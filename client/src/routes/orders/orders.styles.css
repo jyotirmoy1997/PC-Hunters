@@ -1,3 +1,12 @@
 .order-items{
     width: 100%;
 }
+
+.order-page-outer h1{
+    text-align: center;
+}
+
+.order-ch-head div{
+    width: 20%;
+    text-align: center;
+}

@@ -5,6 +5,12 @@ import { deleteProduct } from "../../features/products/productSlice"
 import { useDispatch } from "react-redux"
 import { getAllProducts } from "../../features/products/productSlice"
 
+import PrimeReact from 'primereact/api';
+
+
+PrimeReact.cssTransition = false;
+        
+
 const AdminProductCard = ({products}) => {
     const dispatch = useDispatch()
     const [currentProduct, setCurrentProduct] = useState({})
@@ -44,9 +50,9 @@ const AdminProductCard = ({products}) => {
                                     ${price}
                                 </span>
                             </div>
-                            <div>
-                                <button onClick={() => updateHandler(product)}>Update</button>
-                                <button onClick={() => deleteHandler(_id)}>Delete</button>
+                            <div className="admin-product-card-update">
+                                <button className="pd-update-btn" onClick={() => updateHandler(product)}>Update</button>
+                                <button className="pd-update-btn pd-del" onClick={() => deleteHandler(_id)}>Delete</button>
                             </div>
                         </div>
                     )})
@@ -58,7 +64,7 @@ const AdminProductCard = ({products}) => {
                {
                     updateFlag && 
                     <div>
-                            <button  onClick={() => setUpdateFlag(false)}> &#8592; Back to Product</button>
+                            <button className="dashboard-btn-back"  onClick={() => setUpdateFlag(false)}> &#8592; Back to Product</button>
                             <ProductUpdateForm product={currentProduct}/>
                     </div> 
 

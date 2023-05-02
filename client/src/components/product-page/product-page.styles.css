@@ -99,3 +99,24 @@
 .product-description{
     font-weight: 400;
 }
+
+
+@media (max-width : 500px){
+    .product-info-container{
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+    .product-info-container img{
+        width: 70%;
+        height: auto;
+        margin: 0 auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .quantity-info-outer{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        margin: 0 auto;
+    }
+}

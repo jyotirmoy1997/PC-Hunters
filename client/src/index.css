@@ -9,3 +9,23 @@ body {
 button{
   font-family: 'Play', sans-serif;
 }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #5464a0 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #5464a0;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }

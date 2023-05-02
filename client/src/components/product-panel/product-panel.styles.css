@@ -16,6 +16,10 @@
     align-items: center;
 }
 
+.product-panel-product:hover{
+    cursor: pointer;
+}
+
 .product-panel-product-body{
     background-color: rgba(255, 255, 255, 0.7);
     padding: 0.25em 0.25em;
@@ -32,4 +36,18 @@
     flex-direction: column;
     gap: 20px;
     /* background-color: aqua; */
+}
+
+/* .product-panel-outer{
+    background-color: aqua;
+    width: 100%;
+    margin: 0 auto;
+} */
+
+@media (max-width : 500px){
+    .product-panel-wrapper{
+        display: flex;
+        flex-direction: column;
+        /* background-color: aqua; */
+    }
 }

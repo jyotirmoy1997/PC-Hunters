@@ -26,7 +26,7 @@ const ProductPanel = () => {
     }, [currentCategory])
 
     return(
-        <div>
+        <div className="product-panel-outer">
             {
                 !showCategory && 
                 <div className="product-panel-wrapper">

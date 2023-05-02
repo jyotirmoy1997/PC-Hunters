@@ -11,7 +11,7 @@
     display: flex;
     width: 30%;
     flex-direction: column;
-    height: 400px;
+    height: 450px;
     border: 1px solid black;
 }
 
@@ -44,4 +44,49 @@
 
 .admin-product-card-container .admin-product-card-footer .price-tag{
     color: green;
+}
+
+.admin-product-card-update{
+    padding: 0.75em;
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.pd-update-btn{
+    height: 30px;
+    width: 60px;
+    color: white;
+    padding: 0.25em;
+    background-color: black;
+}
+
+.pd-update-btn:hover{
+    cursor: pointer;
+}
+
+.pd-del{
+    background-color: #C6011F;
+}
+
+@media (max-width : 500px){
+    .admin-product-card{
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2em;
+        margin: 0 auto;
+    }
+    .admin-product-card-container{
+        display: flex;
+        width: 75%;
+        margin: 0 auto;
+        flex-direction: column;
+        height: 400px;
+        border: 1px solid black;
+    }
+    
 }
