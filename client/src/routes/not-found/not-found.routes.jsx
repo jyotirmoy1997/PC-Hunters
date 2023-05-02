@@ -1,5 +1,5 @@
-import "./not-found.styles.css"
 import notFoundImage from "../../assets/404.png"
+import "./not-found.styles.css"
 
 const NotFoundRoute = () => {
     return(

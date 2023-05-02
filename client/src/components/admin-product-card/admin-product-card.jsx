@@ -1,14 +1,10 @@
-import "./admin-product-card.styles.css"
 import { Fragment, useState } from "react"
+import { useDispatch } from "react-redux"
 import ProductUpdateForm from "../product-update-form/product-update-form"
 import { deleteProduct } from "../../features/products/productSlice"
-import { useDispatch } from "react-redux"
 import { getAllProducts } from "../../features/products/productSlice"
 
-import PrimeReact from 'primereact/api';
-
-
-PrimeReact.cssTransition = false;
+import "./admin-product-card.styles.css"
         
 
 const AdminProductCard = ({products}) => {

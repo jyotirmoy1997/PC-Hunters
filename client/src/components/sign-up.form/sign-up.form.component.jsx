@@ -1,5 +1,4 @@
 import { useState } from "react"
-// import Button from "../button/button.component"
 import axios from "axios"
 import "./sign-up.form.styles.css"
 import toast, { Toaster } from 'react-hot-toast';

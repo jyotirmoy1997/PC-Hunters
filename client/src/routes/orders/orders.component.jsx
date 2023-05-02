@@ -1,12 +1,10 @@
-import { useSelector, useDispatch } from "react-redux"
-import { selectUser } from "../../features/user/userSlice"
-import { getAllOrderItems, selectOrderItems, selectOrderStatus } from "../../features/order/orderSlice"
-import { selectProducts } from "../../features/products/productSlice"
-import { useState } from "react"
+import { Fragment } from "react"
+import { useSelector } from "react-redux"
+import { selectOrderItems } from "../../features/order/orderSlice"
 import { nanoid } from "nanoid"
 import OrderItem from "../../components/order-items/order-items.component"
 import "./orders.styles.css"
-import { Fragment } from "react"
+
 
 const Orders = () => {
     const userOrders = useSelector(selectOrderItems)

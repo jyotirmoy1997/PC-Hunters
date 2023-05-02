@@ -1,8 +1,8 @@
-import './checkout-item.styles.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeCartItem, updateCartItem } from '../../features/cart/cartSlice'
 import { selectUser } from '../../features/user/userSlice'
 import deleteIcon from "../../assets/icons/trash.png"
+import './checkout-item.styles.css'
 
 const CheckOutItem = ({cartItem, products}) => {
     const dispatch = useDispatch()

@@ -1,5 +1,5 @@
-import CategoryPreview from "../category-preview/category-preview.component";
 import { useSelector } from "react-redux";
+import CategoryPreview from "../category-preview/category-preview.component";
 import { selectCategories } from "../../features/categories/categoriesSlice";
 import { selectProducts } from "../../features/products/productSlice";
 import './categories-preview.styles.css'

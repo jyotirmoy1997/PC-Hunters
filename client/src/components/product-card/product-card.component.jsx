@@ -1,5 +1,5 @@
-import './product-card.styles.css'
 import { useNavigate } from 'react-router'
+import './product-card.styles.css'
 
 const ProductCard = ({product}) => {
     const navigate = useNavigate()
@@ -18,7 +18,7 @@ const ProductCard = ({product}) => {
                     {name}
                 </span>
                 <span className='price-tag'>
-                    ${price}
+                &#8377;{price}
                 </span>
             </div>
         </div>

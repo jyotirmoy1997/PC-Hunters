@@ -1,7 +1,7 @@
-import { Dropdown } from 'primereact/dropdown';
 import { useState } from 'react';
-import { updateProduct } from '../../features/products/productSlice';
 import { useDispatch } from 'react-redux';
+import { Dropdown } from 'primereact/dropdown';
+import { updateProduct } from '../../features/products/productSlice';
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";   

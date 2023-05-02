@@ -1,13 +1,14 @@
+import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import {useSelector} from "react-redux"
 import CheckOutItem from "../../components/checkout-item.component/checkout-item.component";
-import './checkout.styles.css'
-import {useSelector, useDispatch} from "react-redux"
 import { selectAllCartItems, selectCartTotal } from "../../features/cart/cartSlice";
 import { selectProducts } from "../../features/products/productSlice";
+import { selectUser } from "../../features/user/userSlice";
 import { nanoid } from 'nanoid'
 import axios from "axios";
-import { selectUser } from "../../features/user/userSlice";
-import { Fragment } from "react";
+import './checkout.styles.css'
+
 
 const CheckOut = () => {
     const cartItems = useSelector(selectAllCartItems)

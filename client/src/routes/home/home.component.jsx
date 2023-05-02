@@ -1,9 +1,9 @@
-import Directory from "../../components/directory/directory.component";
-import { categories } from "../../data/categories";
-import { useSelector, useDispatch } from "react-redux";
-import { selectUser } from "../../features/user/userSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import Directory from "../../components/directory/directory.component";
+import { categories } from "../../data/categories";
+import { selectUser } from "../../features/user/userSlice";
 import Footer from "../../components/footer/footer.component";
 import "./home.styles.css"
 

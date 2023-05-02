@@ -1,13 +1,8 @@
 const Product = require("../model/Product")
 const Categories = require("../model/Categories")
 const { StatusCodes } = require("http-status-codes")
-const CustomError = require("../errors/index")
-// const productData = require("../mockData/products.json")
 
 const createProduct = async (req, res) => {
-    // console.log(req.body)
-    // res.send("Okay")
-    // req.body.user = req.user.userId
     try {
         const product = await Product.create({...req.body})
         // console.log(product)
@@ -30,17 +25,8 @@ const getAllProducts = async (req, res) => {
     res.status(StatusCodes.OK).json(products)
 }
 
-const getSingleProduct = async (req, res) => {
-    const product = await Product.findOne({_id: req.params.id})
-    if(!product){
-        throw new CustomError.NotFoundError("Product Not Found")
-    }
-    res.status(StatusCodes.OK).json(product)
-}
 
 const updateProduct = async (req, res) => {
-    // console.log(req.params)
-    // console.log(req.body)
     const product = await Product.findOneAndUpdate({_id: req.params.id}, req.body, {
         new : true
     })
@@ -64,7 +50,6 @@ const deleteProduct = async (req, res) => {
 module.exports = {
     createProduct,
     getAllProducts,
-    getSingleProduct,
     updateProduct,
     deleteProduct,
 }

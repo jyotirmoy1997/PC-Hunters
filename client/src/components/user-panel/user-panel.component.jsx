@@ -1,8 +1,7 @@
 import { Fragment, useState } from "react"
-import { getAllCartItems } from "../../features/cart/cartSlice"
-import { useDispatch, useSelector } from "react-redux"
-import "./user-panel.styles.css"
 import DashboardCart from "../dashboard-cart/dashboard-cart.component"
+import "./user-panel.styles.css"
+
 
 const UserPanel = ({users}) => {
     const [currentUser, setCurrentUser] = useState({})

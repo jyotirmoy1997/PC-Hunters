@@ -1,19 +1,12 @@
-import {useSelector, useDispatch} from "react-redux"
-import {selectUser} from "../../features/user/userSlice"
-import { selectAllCartItems } from "../../features/cart/cartSlice"
-import axios from "axios"
+import { useNavigate } from "react-router"
+import "./payment-page.styles.css"
 
 const PaymentPage = () => {
-    const dispatch = useDispatch()
-    const user = useSelector(selectUser)
-    const products = useSelector(selectAllCartItems)
-    console.log(user, products)
-    
+    const navigate = useNavigate()
     return(
     <div className='payment-page-container'>
         <h1>Payment Successful</h1>
-        <button>Order</button>
-        <button>Go Back to Shopping</button>
+        <button onClick={() => navigate("/shop")}>Go Back to Shopping</button>
     </div>
     )
     

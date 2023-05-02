@@ -1,5 +1,5 @@
-import './category-item.styles.css'
 import { Link } from 'react-router-dom';
+import './category-item.styles.css'
 
 const DirectoryItem = ({category}) => {
     const {title, image} = category;

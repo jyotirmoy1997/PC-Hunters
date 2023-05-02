@@ -1,6 +1,5 @@
 const User = require("../model/User")
 const {StatusCodes} = require("http-status-codes")
-const CustomError = require("../errors")
 const {attachCookiesToResponse} = require("../utils/JWT")
 const createTokenUser = require("../utils/createTokenUser")
 

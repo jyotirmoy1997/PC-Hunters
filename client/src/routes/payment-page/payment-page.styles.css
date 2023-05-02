@@ -1,7 +1,23 @@
 .payment-page-container{
-    height: 500px;
-    display: flex;
-    flex-direction: column;
     width: 80%;
+    height: 200px;
+    max-width: 300px;
+    display: flex;
+    padding: 2em;
+    flex-direction: column;
     margin: 0 auto;
+}
+
+.payment-page-container h1{
+    text-align: center;
+}
+
+.payment-page-container button{
+    width: 200px;
+    height: 50px;
+    padding: 1em;
+    margin: 0 auto;
+    font-size: 15px;
+    color: white;
+    background-color: #006A4E;
 }

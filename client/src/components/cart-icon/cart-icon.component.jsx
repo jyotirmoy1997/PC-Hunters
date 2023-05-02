@@ -1,7 +1,7 @@
-import './cart-icon.styles.css'
-import cartLogo from "../../assets/icons/cart-icon.png"
 import {useSelector} from "react-redux"
 import { selectCartCount } from '../../features/cart/cartSlice'
+import cartLogo from "../../assets/icons/cart-icon.png"
+import './cart-icon.styles.css'
 
 const CartIcon = () => {
     const cartCount = useSelector(selectCartCount)

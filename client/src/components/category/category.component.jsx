@@ -1,10 +1,9 @@
-import ProductCard from "../product-card/product-card.component"
-import './category.styles.css'
 import { useSelector } from "react-redux"
 import { useParams } from "react-router"
 import { Fragment } from "react"
-import { selectCategories } from "../../features/categories/categoriesSlice"
+import ProductCard from "../product-card/product-card.component"
 import { selectProducts } from "../../features/products/productSlice"
+import './category.styles.css'
 
 const Category = () => {
     const { category } = useParams()

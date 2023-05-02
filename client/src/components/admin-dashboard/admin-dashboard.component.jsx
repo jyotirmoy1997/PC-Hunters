@@ -1,11 +1,9 @@
 import {useSelector, useDispatch} from "react-redux"
-import { getAllProducts } from "../../features/products/productSlice"
-import axios from "axios"
+import { useState, useEffect } from "react"
 import { selectAllUser, getAllUsers } from "../../features/user/userSlice"
-import "./admin-dashboard.styles.css"
 import UserPanel from "../user-panel/user-panel.component"
 import ProductPanel from "../product-panel/product-panel.component"
-import { useState, useEffect } from "react"
+import "./admin-dashboard.styles.css"
 import usersLogo from "../../assets/icons/users.png"
 import productsLogo from "../../assets/icons/products.png"
 
@@ -23,7 +21,6 @@ const AdminDashBoard = () => {
     useEffect(() => {
         dispatch(getAllUsers())
     }, [])
-    console.log(window.innerWidth)
     return(
         <div className="admin-dashboard-outer">
             <div className="admin-dashboard-sidebar">

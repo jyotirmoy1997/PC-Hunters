@@ -1,11 +1,9 @@
-import CheckOutItem from "../../components/checkout-item.component/checkout-item.component";
+import { useEffect, Fragment } from "react";
 import {useSelector, useDispatch} from "react-redux"
 import { getAllCartItems, selectAllCartItems, selectCartTotal } from "../../features/cart/cartSlice";
 import { selectProducts } from "../../features/products/productSlice";
 import { nanoid } from 'nanoid'
 import DashboardCartItem from "../dashboard-cart-items/dashboard-cart-items.component";
-import { useEffect } from "react";
-import { Fragment } from "react";
 import "./dashboard-cart.styles.css"
 
 const DashboardCart = ({user}) => {

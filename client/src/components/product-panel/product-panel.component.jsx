@@ -1,9 +1,8 @@
-import { categories } from "../../data/categories"
 import { useState, useEffect } from "react"
 import {useSelector} from "react-redux"
+import { categories } from "../../data/categories"
 import { selectProducts } from "../../features/products/productSlice"
 import AdminProductCard from "../admin-product-card/admin-product-card"
-import ProductAddForm from "../product-add-form/product-add-form.component"
 import "./product-panel.styles.css"
 
 const ProductPanel = () => {

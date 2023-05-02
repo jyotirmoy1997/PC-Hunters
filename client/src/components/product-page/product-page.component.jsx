@@ -1,7 +1,7 @@
+import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectProducts } from "../../features/products/productSlice"
 import { useParams, useNavigate } from "react-router"
-import { useState } from "react"
 import { selectUser } from "../../features/user/userSlice"
 import { addCartItem } from "../../features/cart/cartSlice"
 import "./product-page.styles.css"
@@ -44,7 +44,7 @@ const ProductPage = () => {
                                     <div>{quantity}</div>
                                     <button onClick={incrementQuantity}>+</button>
                                 </div>
-                                <h3>Price : ${product.price * quantity}</h3>
+                                <h3>Price : &#8377;{product.price * quantity}</h3>
                             </div>
                             {
                                 Object.keys(user).length === 0 ? 
