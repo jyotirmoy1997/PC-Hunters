@@ -1,7 +1,6 @@
 import "./order-items.styles.css"
 
 const OrderItem = ({order}) => {
-    console.log("Called !")
     const {image, name, quantity} = order
     return(
         <div className='order-item-container'>

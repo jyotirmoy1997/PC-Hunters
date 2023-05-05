@@ -8,7 +8,6 @@ import "./orders.styles.css"
 
 const Orders = () => {
     const userOrders = useSelector(selectOrderItems)
-    console.log(userOrders)
     return(
         <div className="order-page-outer">
             <h1>My Orders</h1>

@@ -45,7 +45,6 @@ const ProductAddForm = () => {
     const onSubmitHandler = (event) => {
         event.preventDefault()
         dispatch(addNewProduct(formData))
-        console.log(formData)
     }
 
     return(

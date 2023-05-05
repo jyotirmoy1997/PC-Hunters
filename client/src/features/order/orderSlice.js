@@ -31,13 +31,11 @@ const orderSlice = createSlice({
     },
     extraReducers : (builder) => {
         builder.addCase(getAllOrderItems.fulfilled, (state, action) => {
-            // console.log(action.payload)
             state.orders = action.payload.orders
             state.status = 'successfull'
             
         })
         .addCase(getAllOrderItems.rejected, (state, action) => {
-            // console.log(action.payload)
             state.error = action.error.message
             state.status = 'failed'
         })

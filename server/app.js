@@ -33,17 +33,12 @@ server.use(express.json())
 server.use(morgan("tiny"))
 
 // Invoking CORS middleware
-server.use(cors({
-    credentials: true,
-    origin: "http://localhost:5173",
-  }));
+server.use(cors());
   
 
 // Invoking the cookie parser
 server.use(cookieParser(process.env.JWT_SECRET))
 
-// Invoking the file upload middleware
-server.use(fileUpload({useTempFiles : true}))
 
 // Invoking the Routes
 server.use("/api/v1/auth", authRouter)

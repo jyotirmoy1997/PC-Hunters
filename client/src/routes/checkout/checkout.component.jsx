@@ -16,8 +16,6 @@ const CheckOut = () => {
     const products = useSelector(selectProducts)
     const {userId} = useSelector(selectUser)
     const navigate = useNavigate()
-
-    console.log(cartItems)
     const makePayment = async (token) => {
         try {
             const response = await axios.post("http://localhost:5000/api/v1/payment", { user : userId, products : cartItems})

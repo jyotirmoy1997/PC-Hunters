@@ -7,7 +7,6 @@ import DashboardCartItem from "../dashboard-cart-items/dashboard-cart-items.comp
 import "./dashboard-cart.styles.css"
 
 const DashboardCart = ({user}) => {
-    console.log(user)
     const dispatch = useDispatch()
 
     useEffect(() => {

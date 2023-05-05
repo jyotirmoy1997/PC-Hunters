@@ -45,8 +45,6 @@ const SignUpForm = () => {
             notify()
             
         } catch (error) {
-            console.log(error)
-            // setErrorMessage(error.response.data.msg)
             setEmailError('*User already exists')
         }
     }

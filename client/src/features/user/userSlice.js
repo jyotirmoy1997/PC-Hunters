@@ -16,7 +16,6 @@ export const getAllUsers = createAsyncThunk('users/getAllUsers', async() => {
         return response.data
     }
     catch(error){
-        console.log(error)
         return error.response
     }
 })
@@ -24,19 +23,16 @@ export const getAllUsers = createAsyncThunk('users/getAllUsers', async() => {
 
 export const signInUser = createAsyncThunk('users/signInUser', async(formData) => {
     try{
-        const response = await axios.post(`${BASE_URL}/api/v1/auth/login`, 
-        {...formData}, { withCredentials: true })
-        console.log(response)
+        const response = await axios.post(`${BASE_URL}/api/v1/auth/login`, {...formData})
         return response
     }
     catch(error){
-        console.log(error)
         return error.response
     }
 })
 
 export const logOutUser = createAsyncThunk('users/logOutUser', async() => {
-    const response = await axios.post(`${BASE_URL}/api/v1/auth/logout`, { withCredentials: true })
+    const response = await axios.post(`${BASE_URL}/api/v1/auth/logout`)
     return response.data
 })
 
@@ -46,7 +42,6 @@ const userSlice = createSlice({
     reducers : {},
     extraReducers : (builder) => {
         builder.addCase(signInUser.fulfilled, (state, action) => {
-            console.log(action.payload)
             if(action.payload.status === 400){
                 state.user = {}
                 state.error = action.payload.data.msg

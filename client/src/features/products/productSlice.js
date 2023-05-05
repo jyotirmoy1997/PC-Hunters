@@ -66,7 +66,6 @@ const productsSlice = createSlice({
             state.status = 'failed'
         })
         .addCase(addNewProduct.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.products.push(action.payload)
             state.status = 'successfull'
             
@@ -78,7 +77,6 @@ const productsSlice = createSlice({
         .addCase(updateProduct.fulfilled, (state, action) => {
             const id = action.payload._id
             const productsArray = state.products.filter((p) => p._id !== id)
-            // console.log(productsArray)
             state.products = [...productsArray, action.payload]
             
         })

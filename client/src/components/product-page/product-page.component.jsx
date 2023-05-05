@@ -17,8 +17,6 @@ const ProductPage = () => {
     const addProductToCart = () => {
         dispatch(addCartItem({user : user.userId, product : product._id, quantity : quantity}))
     }
-
-    console.log(Object.keys(user).length === 0)
     const incrementQuantity = () => {
         setQuantity(quantity + 1)
     }

@@ -32,7 +32,6 @@ const SignInForm = () => {
         }
     }, [userLogStatus, navigate])
     
-    console.log(user)
     useEffect(() => {
         if(userErr === 'Wrong Password'){
             setPasswordError('*Incorrect Password')
@@ -44,16 +43,11 @@ const SignInForm = () => {
         }
     }, [userErr])
 
-    console.log(userErr)
-    
-    // const userStatus = dispatch(userStatus)
 
     const onChangeHandler = (event) => {
         setFormData({...formData, [event.target.name] : event.target.value})
     }
     
-
-    // console.log(formData)
     const onSubmitHandler = async (event) => {
         event.preventDefault()
         if(formData.email === ''){
