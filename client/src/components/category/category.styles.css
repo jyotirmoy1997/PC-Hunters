@@ -9,3 +9,12 @@
 .category-title{
     text-align: center;
 }
+
+@media (max-width : 500px){
+    .category-container{
+        display: flex;
+        width: 95%;
+        flex-direction: column;
+        margin: 0 auto; 
+    }
+}
