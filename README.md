@@ -1,4 +1,4 @@
-![](/public/banner.png)
+![](./public/banner.png)
 
 # PC Hunters is a MERN Stack E-Commerce Store Prototype
 
@@ -28,18 +28,18 @@
 
 ## Home Page
 
-![](/public/home.png)
+![](./public/home.png)
 
 ## Product Page
 
-![](/public/Product-page.png)
+![](./public/Product-page.png)
 
 ## Cart Page
 
-![](/public/Cart-page.png)
+![](./public/Cart-page.png)
 
 ## Admin Dashboard
 
-![](/public/admin-dashboard.png)
+![](./public/admin-dashboard.png)
 
 ### Admin can perform CRUD operations on the products and view user carts.
