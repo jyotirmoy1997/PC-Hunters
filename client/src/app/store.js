@@ -9,6 +9,8 @@ import orderReducer from "../features/order/orderSlice"
 import { combineReducers } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 
+
+
 const persistConfig = {
   key: 'root',
   storage,
