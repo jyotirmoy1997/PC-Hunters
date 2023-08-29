@@ -1,4 +1,4 @@
-![](./public/banner.png)
+![](https://res.cloudinary.com/dst1eqcmo/image/upload/v1693296823/GitHub%20Readme/PC-Hunters/banner_euzscs.png)
 
 # PC Hunters is a MERN Stack E-Commerce Store Prototype
 
@@ -28,18 +28,18 @@
 
 ## Home Page
 
-![](./public/home.png)
+![](https://res.cloudinary.com/dst1eqcmo/image/upload/v1693296823/GitHub%20Readme/PC-Hunters/home_gw3mfu.png)
 
 ## Product Page
 
-![](./public/Product-page.png)
+![](https://res.cloudinary.com/dst1eqcmo/image/upload/v1693296822/GitHub%20Readme/PC-Hunters/Product-page_k25crf.png)
 
 ## Cart Page
 
-![](./public/Cart-page.png)
+![](https://res.cloudinary.com/dst1eqcmo/image/upload/v1693296822/GitHub%20Readme/PC-Hunters/Cart-Page_zjrdmo.png)
 
 ## Admin Dashboard
 
-![](./public/admin-dashboard.png)
+![](https://res.cloudinary.com/dst1eqcmo/image/upload/v1693296822/GitHub%20Readme/PC-Hunters/admin-dashboard_jrigmh.png)
 
 ### Admin can perform CRUD operations on the products and view user carts.
