@@ -30,7 +30,6 @@ const App = () => {
     if(userStat === "loggedIn" && role === 'user'){
       dispatch(getAllCartItems(userId))
       dispatch(getAllOrderItems(userId))
-      console.log("Called")
     }
   }, [userStat])
 
@@ -55,8 +54,6 @@ const App = () => {
             <Route path='/payment' element={<PaymentPage/>}/>
           </Fragment>)
         }
-        
-        
        </Route>
        <Route path='*' element={<NotFoundRoute />}/>
     </Routes>

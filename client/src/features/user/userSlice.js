@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+// axios.defaults.withCredentials = true;
 
-const BASE_URL = "http://localhost:5000"
+const BASE_URL = "http://localhost:5173"
 
 const initialState = {
     allUsers : [],
@@ -23,8 +24,13 @@ export const getAllUsers = createAsyncThunk('users/getAllUsers', async() => {
 
 export const signInUser = createAsyncThunk('users/signInUser', async(formData) => {
     try{
-        const response = await axios.post(`${BASE_URL}/api/v1/auth/login`, {...formData})
-        return response
+        const response = await axios.post(`${BASE_URL}/api/v1/auth/login`, { ...formData }, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            withCredentials : true
+          })
+          return response;
     }
     catch(error){
         return error.response

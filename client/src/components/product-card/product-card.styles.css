@@ -3,9 +3,10 @@
     width: 100%;
     flex-direction: column;
     height: 450px;
-    border: 1px solid black;
-    border-radius: 5px;
-    
+    /* border: 1px solid black; */
+    /* border-radius: 5px; */
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 3px 6px 6px 3px rgba(0,0,0,0.23); */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
 
 .product-card-container:hover{

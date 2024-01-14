@@ -2,8 +2,11 @@ const Cart = require("../model/Cart")
 const Product = require("../model/Product")
 
 const getAllCartItems = async (req, res) => {
-    // console.log(req.params)
     const {userId} = req.params
+    if(userId !== req.user.userId){
+      return res.status(401).json({ error: "Not Authorized" })
+    }
+    
     try {
       const cart = await Cart.findOne({user : userId})
       if(cart === null){
@@ -13,16 +16,18 @@ const getAllCartItems = async (req, res) => {
         return res.status(200).json(cart)
       }
     } catch (error) {
-      // console.log(error)
       return res.status(500).json({ error: "Server error" })
     }
 }
 
 const addCartItem = async (req, res) => {
-    const userId = req.body.user // assuming user ID is available in req.user.id
+  const userId = req.body.user
+  if(userId !== req.user.userId){
+    return res.status(401).json({ error: "Not Authorized" })
+  }
   const productId = req.body.product
   const quantity = req.body.quantity || 1
-  // console.log(quantity)
+
   const productPrice = (await Product.findOne({_id : productId})).price
   try {
     let cart = await Cart.findOne({ user: userId })
@@ -63,8 +68,11 @@ const addCartItem = async (req, res) => {
 }
 
 const updateCartItem = async (req, res) => {
+
   const {user, product, operation} = req.body
-  // console.log(user, product, operation)
+  if(user !== req.user.userId){
+    return res.status(401).json({ error: "Not Authorized" })
+  }
   const productPrice = (await Product.findOne({_id : product})).price
   try {
     let cart = await Cart.findOne({ user: user })
@@ -104,6 +112,9 @@ const updateCartItem = async (req, res) => {
 const removeCartItem = async (req, res) => {
   // console.log("Hit")
   const {user, product} = req.body
+  if(user !== req.user.userId){
+    return res.status(401).json({ error: "Not Authorized" })
+  }
   const productPrice = (await Product.findOne({_id : product})).price
   // console.log(productPrice)
   // res.send("Okay")

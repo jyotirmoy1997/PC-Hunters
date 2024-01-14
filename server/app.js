@@ -30,10 +30,13 @@ server.use("/api/v1/payment/webhook", express.raw({type: "*/*"}))
 server.use(express.json())
 
 // Invoking the logger middleware
-server.use(morgan("tiny"))
+// server.use(morgan("tiny"))
 
 // Invoking CORS middleware
-server.use(cors());
+server.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  }));
   
 
 // Invoking the cookie parser

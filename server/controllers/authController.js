@@ -34,7 +34,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     const {email, password} = req.body
-    // console.log(email, password)
+    console.log(email, password)
     const user = await User.findOne({email : email})
     if(!user){
         return res.status(StatusCodes.BAD_REQUEST).json({msg : "User doesn't exist"})
@@ -45,6 +45,7 @@ const login = async (req, res) => {
     }
     const tokenUser = createTokenUser(user)
     attachCookiesToResponse(res, tokenUser)
+    console.log("Cookie :: ", res.cookie)
     res.status(200).json(tokenUser)
 }
 

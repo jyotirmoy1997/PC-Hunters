@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000"
+const BASE_URL = "http://localhost:5173"
 
 const initialState = {
     orders : [],
