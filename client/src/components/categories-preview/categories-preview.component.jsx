@@ -15,6 +15,7 @@ const override = {
 const CategoriesPreview = () => {
     const categories = useSelector(selectCategories)
     const Products = useSelector(selectProducts)
+    
     if(!categories){
         return(
             <div className="shop-container" >

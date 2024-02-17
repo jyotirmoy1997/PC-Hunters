@@ -4,6 +4,7 @@ import { selectProducts } from "../../features/products/productSlice"
 import { useParams, useNavigate } from "react-router"
 import { selectUser } from "../../features/user/userSlice"
 import { addCartItem } from "../../features/cart/cartSlice"
+import Footer from "../../components/footer/footer.component"
 import "./product-page.styles.css"
 
 const ProductPage = () => {
@@ -33,6 +34,7 @@ const ProductPage = () => {
                 <div className="product-info-container">
                     <img src={product.image} alt="" />
                     <div>
+                        <h2 className="prod-desc">Product Description</h2>
                         <h3 className="product-description">{product.description}</h3>
                         <div className="quantity-info-wrap" >
                             <h3>Select Quantity</h3>
@@ -54,6 +56,7 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
     

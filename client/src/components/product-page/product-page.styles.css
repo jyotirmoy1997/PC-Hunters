@@ -17,8 +17,13 @@
 
 .product-page-wrapper h1{
     text-align: center;
-    text-decoration: underline;
-    text-underline-offset: 10px;
+    /* text-decoration: underline;
+    text-underline-offset: 10px; */
+    background-color: #C6E6FB;
+    width: auto;
+    margin: 1em auto;
+    padding: 0.5em;
+    border-radius: 5px;
 }
 
 .product-info-container{
@@ -35,9 +40,10 @@
 
 
 
+
 .quantity-info-outer{
     display: flex;
-    width: 55%;
+    width: 60%;
     justify-content: space-around;
     margin: 0 auto;
 }
@@ -115,9 +121,12 @@
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
     .quantity-info-outer{
-        display: flex;
         width: 100%;
-        justify-content: space-around;
-        margin: 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .prod-desc{
+        text-align: center;
     }
 }
