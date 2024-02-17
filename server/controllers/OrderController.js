@@ -26,7 +26,6 @@ const addNewOrder = async (user, productsArray) => {
                     userOrder.products.push(item)
                 }
             }
-            console.log(userOrder)
             await userOrder.save()
         }
     } catch (error) {

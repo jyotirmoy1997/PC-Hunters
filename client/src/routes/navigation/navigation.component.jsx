@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { userStatus, logOutUser, selectUser } from '../../features/user/userSlice';
 import Logo from "../../assets/LOGO.png"
 import CartIcon from '../../components/cart-icon/cart-icon.component';
+import CartIconZero from '../../components/cart-icon/cart-icon-zero.component';
 import './navigation.styles.css';
 import { clearCart } from '../../features/cart/cartSlice';
 import { useRef } from 'react';
@@ -71,15 +72,19 @@ const Navigation = () => {
                         </Link>
                     </Fragment>
                 ) : 
-                (<Link className="nav-link" to="/log-in" onClick={showNavBar}>
-                    Log In
-                </Link>
-                
+                (<>
+                    <Link className="nav-link" to="/log-in" onClick={showNavBar}>
+                        Log In
+                    </Link>
+                    <Link className="nav-link" to="/checkout" onClick={showNavBar}>
+                        <CartIconZero/>
+                    </Link>
+                </>
                 
                 )
             }
             {
-                 user.role !== 'admin' && 
+                 user.role !== 'admin' && userLoggedIn && 
                  <Link className="nav-link" to="/checkout" onClick={showNavBar}>
                     <CartIcon/>
                  </Link>

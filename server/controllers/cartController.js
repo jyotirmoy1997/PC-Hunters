@@ -3,6 +3,7 @@ const Product = require("../model/Product")
 
 const getAllCartItems = async (req, res) => {
     const {userId} = req.params
+
     if(userId !== req.user.userId){
       return res.status(401).json({ error: "Not Authorized" })
     }
@@ -22,6 +23,7 @@ const getAllCartItems = async (req, res) => {
 
 const addCartItem = async (req, res) => {
   const userId = req.body.user
+
   if(userId !== req.user.userId){
     return res.status(401).json({ error: "Not Authorized" })
   }

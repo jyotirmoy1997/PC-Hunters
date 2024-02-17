@@ -2,6 +2,7 @@ const { isTokenValid } = require('../utils/JWT');
 
 const authenticateUser = async (req, res, next) => {
   const token = req.signedCookies.token;
+
   if (!token) {
     throw new Error('Authentication Invalid');
   }
