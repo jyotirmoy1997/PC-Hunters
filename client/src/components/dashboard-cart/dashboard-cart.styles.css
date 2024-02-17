@@ -1,3 +1,7 @@
 .dashboard-cart-items{
     width: 100%;
 }
+
+.admin-dashobard-empty-cart{
+    text-align: center;
+}

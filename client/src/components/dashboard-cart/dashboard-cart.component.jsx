@@ -23,7 +23,7 @@ const DashboardCart = ({user}) => {
         <Fragment>
 
             {
-                cartItems.length === 0 ? <h2>Cart is Empty For Current User</h2> :
+                cartItems.length === 0 ? <h2 className="admin-dashobard-empty-cart">Cart is Empty For Current User</h2> :
                     <div className="checkout-container">
                         <h2>Cart</h2>
                         <div className="checkout-header">

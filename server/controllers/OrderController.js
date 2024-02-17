@@ -35,9 +35,6 @@ const addNewOrder = async (user, productsArray) => {
 
 const getAllOrders = async(req, res) => {
     const { userId } = req.params
-    if(userId !== req.user.userId){
-        return res.status(401).json({ error: "Not Authorized" })
-      }
     try {
         const userOrder = await Order.findOne({user : userId})
         if(!userOrder){

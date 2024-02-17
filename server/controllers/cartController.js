@@ -4,10 +4,6 @@ const Product = require("../model/Product")
 const getAllCartItems = async (req, res) => {
     const {userId} = req.params
 
-    if(userId !== req.user.userId){
-      return res.status(401).json({ error: "Not Authorized" })
-    }
-    
     try {
       const cart = await Cart.findOne({user : userId})
       if(cart === null){
