@@ -5,15 +5,24 @@ import { useParams, useNavigate } from "react-router"
 import { selectUser } from "../../features/user/userSlice"
 import { addCartItem } from "../../features/cart/cartSlice"
 import Footer from "../../components/footer/footer.component"
+import { BounceLoader } from "react-spinners"
 import "./product-page.styles.css"
+
+const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "grey",
+  };
 
 const ProductPage = () => {
     const [quantity, setQuantity] = useState(1)
     const { productId } = useParams()
-    const product = useSelector(selectProducts).filter((p) => p._id === productId)[0]
+    const allProducts = useSelector(selectProducts)
+    
     const user = useSelector(selectUser)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
 
     const addProductToCart = () => {
         dispatch(addCartItem({user : user.userId, product : product._id, quantity : quantity}))
@@ -27,6 +36,31 @@ const ProductPage = () => {
         else
             setQuantity(quantity - 1)
     }
+
+    if(!allProducts || !Array.isArray(allProducts)){
+        return(
+            <div className="product-page-wrapper">
+                <BounceLoader
+                    color="Grey"
+                    loading
+                    cssOverride={override}
+                    size={70}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </div>)
+    }
+
+    const productsInfo = allProducts.filter((p) => p._id === productId)
+    if(productsInfo.length < 1){
+        return(
+            <div className="product-page-wrapper-404">
+                <h1>404</h1>
+                <h2>Error : Product Not Found !</h2>
+            </div>)
+    }
+
+    const product = productsInfo[0]
     return(
         <div className="product-page-outer">
             <div className="product-page-wrapper">
